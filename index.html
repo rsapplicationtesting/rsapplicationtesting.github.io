@@ -1,1520 +1,410 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HelioSource EV Mobile Charging - Complete User Flow</title>
-    <script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><style>@font-face{font-family:luna-console-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAaoAAsAAAAACnAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAIsAAADcIw4ngk9TLzIAAAGUAAAAPgAAAFZWmlGRY21hcAAAAdQAAAD4AAACyDWnbdFnbHlmAAACzAAAAZsAAAH8Lq6nDGhlYWQAAARoAAAAMQAAADZ25cSzaGhlYQAABJwAAAAdAAAAJAgCBBRobXR4AAAEvAAAABcAAABYGAH//GxvY2EAAATUAAAAGAAAAC4JNAjUbWF4cAAABOwAAAAfAAAAIAEjAFBuYW1lAAAFDAAAASkAAAIWm5e+CnBvc3QAAAY4AAAAcAAAAJ7p9v7ZeJxNjT0OgkAQhb9FFllBFMHGwjN4AipiZckFaDAmxIojeHDf7oboTObvvZk3GGDHjY6kvz8Gqnlc3lxIieb5/97Mr+dIvk7i0lBzxQfLkZ6BiYWEjKtyIc7pR0GpWnOiUW+E/PA9FQfdRj0r3AlxYc7kZ221IXtko/C3cd+Grytr2UrTq9VfrRAJ0wB4nGNgZBRnnMDAysDA1Ml0hoGBoR9CM75mMGLkAIoysDIzYAUBaa4pDAcYdD+ysYC4MSxMYGFGEAEAtDUIzAAAeJzN0s1OwkAUhuF36A8gtBYKiQsXxrVeFEGibJAQCPfgBbnypuYK8Dszx40xJu48kyekH+3M6XSACijkQUoIHwSs3pWGlBdcpbzkTdcLOiUlj6zYsGXPgRPnWF8u+tfSNc/slB6VhpR+r6BZbNxwy53GvQZMGTGk0WpzemZap9U9YyYsudYzg7RuRa0J6h9m/a2mf7zfSt006qWf2UXXplask/9S6Z3C15stsd3PLFu5kazdUJ5cIxun76tvls3lxfWydbYLO9fJq2tl7xZycGM5uomcnPV5dtrLGDI7a3GQYb9FZmczlpmdz1hldm5jnVF/Akk1KvR4nF1RTW8TMRCdZ3udBsSWBcdLG9UlG623pKihaeIIIZVUiHOknlAVNQgu0Jx6oB9/olz4BUXiyv+AAxz4BT1wRIJDT+wG7woQwhqN3vi9Nx6NCeQPf8oDYkRogU/z5xhzUbz2ZcmxD3xccRHwBId8nD/D2FvmOZHgglFIy9QmSrEBWYM02Gr1toG+6+lGpGRiB3Fiy0pJ/q2YKOeUz3W3zu+tu3r+0XSMj61mmro0fcPv2mbT/vyS7Vi7w/YaxjSKd2W+TAfWDtJqpPncvw1B1KFHfjK5CJltILMP0fVTOL0KH0OnY73IYl0LUZNd2C5SFRvEujfc9my/siQVi8vrrQe3Vq7dYEK9SnYjdvtO9JIJfqrvS9E4uHocXxE6XFIzJlherGVnk+nn6eQsW/sH4r3v8Vt31NqNOqssOmBBcBLfNMtqtnASr4Rl/xmT4vGL/90VpD87/8T3KfA7zeoYAocjmOJihP1zD2BGxTmVP+LT90oXeuWwjgyB0j3Xt4nEj1FxUSrf4muy2W5vJn+tbCkpb7z7FwBKXUkAeJxjYGRgYADikOXX2uP5bb4ycLOABKI4H+9rgNH//zIwsDCzMAElOBhAJAMASwoLJgAAAHicY2BkYGBhAAEWhv9///9lYWZgZEAFYgBbLQQgAAAAeJxjYGBgYIHj/3+B+D+MTwkAACOnBBMAeJxjYAACPgYZhiiGEwx3GP7hhwBJdRIJeJxjYGRgYBBjcGFgZgABJiDmAkIGhv9gPgMAEYUBdAB4nGWQPW7CQBSEx2BIAlKCFCkps1UKIpmfkgNAT0GXwpi1MbK91npBossJcoQcIaeIcoIcKGPzaGAtP38zb97uygAG+IWHenm4bWq9WrihOnGb9CDsk5+FO+jjRbhLfyjcwxumwn084p07eP4dnQFK4Rbu8SHcpv8p7JO/hDt4wrdwl/6PcA8r/An38eoN08gUsSncUif7LLRnef6utK1SU6hJMD5bC11oGzq9Ueujqg7J1LlYxdbkas6uzjKjSmt2OnLB1rlyNhrF4geRyZEigkGBuKkOS2gk2CNDCHvVvdQrpi0q+rVWmCDA+Cq1YKpokiGVxobJNY6sFQ48bUrXMa34Ws7kpLnMat4kIyv+77q3oxPRD7BtpkrMMOITX+SD5g75Pz0RXqgAAAB4nG3GSw6CMBRA0XeRohb/H1wFi2qAQCcteWnT7WvC1DO5VyrZWPmvo2JHjaFhz4EjlpYTZy5cuXHnwZMXbzo+YgenU+rHWEK7rfp5SXVxGsykGtX4sObUxJx+YcChTCR6RiKFgGdmYSWLfAGgdBim) format("woff")}[class^=luna-console-icon-],[class*=" luna-console-icon-"]{display:inline-block;font-family:luna-console-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-console-icon-caret-down:before{content:""}.luna-console-icon-caret-right:before{content:""}.luna-console-icon-warn:before{content:""}.luna-console-icon-error:before{content:""}.luna-console-icon-input:before{content:""}.luna-console-icon-output:before{content:""}.luna-console{background:#fff;overflow-y:auto;-webkit-overflow-scrolling:touch;height:100%;position:relative;will-change:scroll-position;cursor:default;font-size:12px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace}.luna-console.luna-console-theme-dark{background-color:#141414}.luna-console-hidden{display:none!important}.luna-console-fake-logs{position:absolute;left:0;top:0;pointer-events:none;visibility:hidden;width:100%}.luna-console-logs{padding-top:1px;position:absolute;width:100%}.luna-console-log-container{box-sizing:content-box;padding:0 8px}.luna-console-log-container.luna-console-error{background:#fff0f0}.luna-console-log-container.luna-console-warn{background:#fffbe5}.luna-console-log-container.luna-console-selected{background:#ecf1f8}.luna-console-log-container.luna-console-selected:not(.luna-console-error):not(.luna-console-warn){border-color:#ccdef5}.luna-console-log-container.luna-console-selected .luna-console-log-item{background:#ecf1f8}.luna-console-log-container.luna-console-selected .luna-console-log-item:not(.luna-console-error):not(.luna-console-warn){border-color:#ccdef5}.luna-console-header{white-space:nowrap;display:flex;font-size:11px;color:#545454;border-top:1px solid transparent;border-bottom:1px solid rgba(0,0,0,.06)}.luna-console-header .luna-console-time-from-container{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:3px 10px}.luna-console-nesting-level{width:14px;flex-shrink:0;margin-top:-1px;margin-bottom:-1px;position:relative;border-right:1px solid rgba(0,0,0,.06)}.luna-console-nesting-level.luna-console-group-closed:before{content:""}.luna-console-nesting-level:before{border-bottom:1px solid rgba(0,0,0,.06);position:absolute;top:0;left:0;margin-left:100%;width:5px;height:100%;box-sizing:border-box}.luna-console-log-item{position:relative;display:flex;align-items:flex-start;border-top:1px solid transparent;border-bottom:1px solid rgba(0,0,0,.06);margin-top:-1px;color:#333;padding:8px 102px 8px 0}.luna-console-log-item:after{content:"";display:block;clear:both}.luna-console-log-item .luna-console-code{display:inline;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace}.luna-console-log-item .luna-console-code .luna-console-keyword{color:#881280}.luna-console-log-item .luna-console-code .luna-console-number{color:#1c00cf}.luna-console-log-item .luna-console-code .luna-console-operator{color:gray}.luna-console-log-item .luna-console-code .luna-console-comment{color:#236e25}.luna-console-log-item .luna-console-code .luna-console-string{color:#1a1aa6}.luna-console-log-item a{color:#15c!important}.luna-console-log-item .luna-console-icon-container{margin:0 -6px 0 10px;display:flex;align-items:center;min-height:22px}.luna-console-log-item .luna-console-icon-container .luna-console-icon{line-height:1;font-size:12px;color:#333;position:relative}.luna-console-log-item .luna-console-icon-container .luna-console-icon-caret-right,.luna-console-log-item .luna-console-icon-container .luna-console-icon-caret-down{top:0;left:-2px}.luna-console-log-item .luna-console-icon-container .luna-console-icon-error{top:0;color:#ef3842}.luna-console-log-item .luna-console-icon-container .luna-console-icon-warn{top:0;color:#e8a400}.luna-console-log-item .luna-console-count{background:#8097bd;color:#fff;padding:2px 4px;border-radius:10px;font-size:12px;float:left;margin:1px -6px 0 10px}.luna-console-log-item .luna-console-log-content-wrapper{flex:1;overflow:hidden}.luna-console-log-item .luna-console-add-to-chat-btn{position:absolute;top:8px;right:8px;background:#0000000f;border-radius:8px;padding:5px 8px;font-family:monospace;font-size:12px;font-weight:400;color:#000000f2;cursor:pointer;-webkit-user-select:none;user-select:none;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .2s ease}.luna-console-log-item .luna-console-add-to-chat-btn span{line-height:1.2;letter-spacing:-.04em}.luna-console-log-item.luna-console-error .luna-console-add-to-chat-btn{background:#d427273d}.luna-console-log-item.luna-console-warn .luna-console-add-to-chat-btn{background:#ffc3003d}.luna-console-log-item .luna-console-log-content{padding:3px 0;margin:0 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:pre-wrap;-webkit-user-select:text;user-select:text}.luna-console-log-item .luna-console-log-content *{-webkit-user-select:text;user-select:text}.luna-console-log-item .luna-console-log-content>*{vertical-align:top}.luna-console-log-item .luna-console-log-content .luna-console-undefined,.luna-console-log-item .luna-console-log-content .luna-console-null{color:#5e5e5e}.luna-console-log-item .luna-console-log-content .luna-console-number{color:#1c00cf}.luna-console-log-item .luna-console-log-content .luna-console-boolean{color:#0d22aa}.luna-console-log-item .luna-console-log-content .luna-console-symbol,.luna-console-log-item .luna-console-log-content .luna-console-regexp{color:#881391}.luna-console-log-item .luna-console-data-grid,.luna-console-log-item .luna-console-dom-viewer{white-space:initial}.luna-console-log-item.luna-console-error{z-index:50;background:#fff0f0;color:#720000;border-top:1px solid #ffd6d6;border-bottom:1px solid #ffd6d6}.luna-console-log-item.luna-console-error .luna-console-stack{padding-left:1.2em;white-space:nowrap}.luna-console-log-item.luna-console-error .luna-console-count{background:#720000}.luna-console-log-item.luna-console-debug{z-index:20}.luna-console-log-item.luna-console-input{border-bottom-color:transparent}.luna-console-log-item.luna-console-warn{z-index:40;color:#5c5c00;background:#fffbe5;border-top:1px solid #fff5c2;border-bottom:1px solid #fff5c2}.luna-console-log-item.luna-console-warn .luna-console-count{background:#e8a400}.luna-console-log-item.luna-console-info{z-index:30}.luna-console-log-item.luna-console-group,.luna-console-log-item.luna-console-groupCollapsed{font-weight:700}.luna-console-preview{display:inline-block}.luna-console-preview .luna-console-preview-container{display:flex;align-items:center}.luna-console-preview .luna-console-json{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-left:12px}.luna-console-preview .luna-console-preview-icon-container{display:block}.luna-console-preview .luna-console-preview-icon-container .luna-console-icon{position:relative;font-size:12px}.luna-console-preview .luna-console-preview-icon-container .luna-console-icon-caret-down{top:2px}.luna-console-preview .luna-console-preview-icon-container .luna-console-icon-caret-right{top:1px}.luna-console-preview .luna-console-preview-content-container{word-break:break-all}.luna-console-preview .luna-console-descriptor,.luna-console-preview .luna-console-object-preview{font-style:italic}.luna-console-preview .luna-console-key{color:#881391}.luna-console-preview .luna-console-number{color:#1c00cf}.luna-console-preview .luna-console-null{color:#5e5e5e}.luna-console-preview .luna-console-string{color:#c41a16}.luna-console-preview .luna-console-boolean{color:#0d22aa}.luna-console-preview .luna-console-special{color:#5e5e5e}.luna-console-theme-dark{color-scheme:dark}.luna-console-theme-dark .luna-console-log-container.luna-console-selected .luna-console-log-item{background:#29323d}.luna-console-theme-dark .luna-console-log-container.luna-console-selected .luna-console-log-item:not(.luna-console-error):not(.luna-console-warn){border-color:#4173b4}.luna-console-theme-dark .luna-console-log-item{color:#a5a5a5;border-bottom-color:#3d3d3d}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-keyword{color:#e36eec}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-number{color:#9980ff}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-operator{color:#7f7f7f}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-comment{color:#747474}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-string{color:#f29766}.luna-console-theme-dark .luna-console-log-item.luna-console-error{background:#290000;color:#ff8080;border-top-color:#5c0000;border-bottom-color:#5c0000}.luna-console-theme-dark .luna-console-log-item.luna-console-error .luna-console-count{background:#ff8080}.luna-console-theme-dark .luna-console-log-item.luna-console-warn{color:#ffcb6b;background:#332a00;border-top-color:#650;border-bottom-color:#650}.luna-console-theme-dark .luna-console-log-item .luna-console-count{background:#42597f;color:#949494}.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-undefined,.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-null{color:#7f7f7f}.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-number,.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-boolean{color:#9980ff}.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-symbol,.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-regexp{color:#e36eec}.luna-console-theme-dark .luna-console-log-item .luna-console-add-to-chat-btn{background:#d427274d;color:#ffffffe6}.luna-console-theme-dark .luna-console-log-item .luna-console-add-to-chat-btn:hover{background:#d4272773}.luna-console-theme-dark .luna-console-icon-container .luna-console-icon-caret-right,.luna-console-theme-dark .luna-console-icon-container .luna-console-icon-caret-down{color:#9aa0a6}.luna-console-theme-dark .luna-console-header{border-bottom-color:#3d3d3d}.luna-console-theme-dark .luna-console-nesting-level{border-right-color:#3d3d3d}.luna-console-theme-dark .luna-console-nesting-level:before{border-bottom-color:#3d3d3d}.luna-console-theme-dark .luna-console-preview .luna-console-key{color:#e36eec}.luna-console-theme-dark .luna-console-preview .luna-console-number{color:#9980ff}.luna-console-theme-dark .luna-console-preview .luna-console-null{color:#7f7f7f}.luna-console-theme-dark .luna-console-preview .luna-console-string{color:#f29766}.luna-console-theme-dark .luna-console-preview .luna-console-boolean{color:#9980ff}.luna-console-theme-dark .luna-console-preview .luna-console-special{color:#7f7f7f}@font-face{font-family:luna-object-viewer-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAS8AAsAAAAAB7QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAGEAAACMISgl+k9TLzIAAAFsAAAAPQAAAFZLxUkWY21hcAAAAawAAADWAAACdBU42qdnbHlmAAAChAAAAC4AAAAwabU7V2hlYWQAAAK0AAAALwAAADZzjr4faGhlYQAAAuQAAAAYAAAAJAFyANlobXR4AAAC/AAAABAAAABAAZAAAGxvY2EAAAMMAAAAEAAAACIAtACobWF4cAAAAxwAAAAfAAAAIAEbAA9uYW1lAAADPAAAASkAAAIWm5e+CnBvc3QAAARoAAAAUwAAAHZW8MNZeJxNjTsOQFAQRc/z/+sV1mABohKV0gZeJRJR2X9cT4RJZu7nFIMBMjoGvHGaF6rdngcNAc/c/O/Nvq2W5E1igdNE2zv1iGh1c5FQPlYXUlJRyxt9+/pUKadQa/AveGEGZQAAAHicY2BkkGScwMDKwMBQx9ADJGWgdAIDJ4MxAwMTAyszA1YQkOaawnCAQfcjE8MJIFcITDIwMIIIAFqDCGkAAAB4nM2STQ4BQRCFv54ZP8MwFhYW4gQcShBsSERi50BWDuFCcwJedddKRGKnOt8k9aanqudVAy0gF3NRQLgTsLhJDVHP6UW94Kp8zEhKwYIlG/YcOXHm0mTPp96aumLLwdUQ1fcIqmJrwpSZL+iqak5JmyE1Ayr1bdGhr/2ZPmp/qPQtuj/uJzqQl+pfDyypesQD6AT/ElV8PjyrMccT9rdLR3PUFBI227VTio1jbm6dodg5VnPvmAsHxzofHfmi+Sbs/pwdWcXFkWdNSNg9arIE2QufuSCyAAB4nGNgZACBlQzTGZgYGMyVxVc2O073AIpAxHsYloHFRc2dPZY2OTIwAACmEQesAAB4nGNgZGBgAOINe2b6x/PbfGXgZjgBFIjifLyvAUEDwUqGZUCSg4EJxAEAUn4LLAB4nGNgZGBgOMHAACdXMjAyoAIBADizAkx4nGNgAIITUEwGAABZUAGReJxjYAACHgYJ3BAAE94BXXicY2BkYGAQYGBmANEMDExAzAWEDAz/wXwGAApcASsAeJxlkD1uwkAUhMdgSAJSghQpKbNVCiKZn5IDQE9Bl8KYtTGyvdZ6QaLLCXKEHCGniHKCHChj82hgLT9/M2/e7soABviFh3p5uG1qvVq4oTpxm/Qg7JOfhTvo40W4S38o3MMbpsJ9POKdO3j+HZ0BSuEW7vEh3Kb/KeyTv4Q7eMK3cJf+j3APK/wJ9/HqDdPIFLEp3FIn+yy0Z3n+rrStUlOoSTA+WwtdaBs6vVHro6oOydS5WMXW5GrOrs4yo0prdjpywda5cjYaxeIHkcmRIoJBgbipDktoJNgjQwh71b3UK6YtKvq1VpggwPgqtWCqaJIhlcaGyTWOrBUOPG1K1zGt+FrO5KS5zGreJCMr/u+6t6MT0Q+wbaZKzDDiE1/kg+YO+T89EV6oAAAAeJxdxjkOgCAUANE/uOOGB+FQBIjaaEJIuL6FsfE1M6Lk9fXPoKioaWjp6BnQjEzMLKwYNtHepZhtuMs1vpvO/ch4HIlIxhK4KVyc7BwiD8nvDlkA) format("woff")}[class*=" luna-object-viewer-icon-"],[class^=luna-object-viewer-icon-]{display:inline-block;font-family:luna-object-viewer-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-object-viewer-icon-caret-down:before{content:""}.luna-object-viewer-icon-caret-right:before{content:""}.luna-object-viewer{overflow-x:auto;-webkit-overflow-scrolling:touch;overflow-y:hidden;cursor:default;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;line-height:1.2;min-height:100%;color:#333;list-style:none!important}.luna-object-viewer ul{list-style:none!important;padding:0 0 0 12px!important;margin:0!important}.luna-object-viewer li{position:relative;white-space:nowrap;line-height:16px;min-height:16px}.luna-object-viewer>li>.luna-object-viewer-key{display:none}.luna-object-viewer span{position:static!important}.luna-object-viewer li .luna-object-viewer-collapsed~.luna-object-viewer-close:before{color:#999}.luna-object-viewer-array .luna-object-viewer-object .luna-object-viewer-key{display:inline}.luna-object-viewer-null{color:#5e5e5e}.luna-object-viewer-regexp,.luna-object-viewer-string{color:#c41a16}.luna-object-viewer-number{color:#1c00cf}.luna-object-viewer-boolean{color:#0d22aa}.luna-object-viewer-special{color:#5e5e5e}.luna-object-viewer-key,.luna-object-viewer-key-lighter{color:#881391}.luna-object-viewer-key-lighter{opacity:.6}.luna-object-viewer-key-special{color:#5e5e5e}.luna-object-viewer-collapsed .luna-object-viewer-icon,.luna-object-viewer-expanded .luna-object-viewer-icon{position:absolute!important;left:-12px;color:#727272;font-size:12px}.luna-object-viewer-icon-caret-right{top:0}.luna-object-viewer-icon-caret-down{top:1px}.luna-object-viewer-expanded>.luna-object-viewer-icon-caret-down{display:inline}.luna-object-viewer-expanded>.luna-object-viewer-icon-caret-right{display:none}.luna-object-viewer-collapsed>.luna-object-viewer-icon-caret-down{display:none}.luna-object-viewer-collapsed>.luna-object-viewer-icon-caret-right{display:inline}.luna-object-viewer-hidden~ul{display:none}.luna-object-viewer-theme-dark{color:#fff}.luna-object-viewer-theme-dark .luna-object-viewer-null,.luna-object-viewer-theme-dark .luna-object-viewer-special{color:#a1a1a1}.luna-object-viewer-theme-dark .luna-object-viewer-regexp,.luna-object-viewer-theme-dark .luna-object-viewer-string{color:#f28b54}.luna-object-viewer-theme-dark .luna-object-viewer-boolean,.luna-object-viewer-theme-dark .luna-object-viewer-number{color:#9980ff}.luna-object-viewer-theme-dark .luna-object-viewer-key,.luna-object-viewer-theme-dark .luna-object-viewer-key-lighter{color:#5db0d7}@font-face{font-family:luna-data-grid-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAScAAsAAAAAB4wAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAFwAAACGIRYl5k9TLzIAAAFkAAAAPQAAAFZLxUkYY21hcAAAAaQAAADLAAACXsU3J5xnbHlmAAACcAAAACUAAAAwNxN2HmhlYWQAAAKYAAAALgAAADZzjr4QaGhlYQAAAsgAAAAYAAAAJAFyANhobXR4AAAC4AAAABAAAAA8AZAAAGxvY2EAAALwAAAAEAAAACAAnACobWF4cAAAAwAAAAAfAAAAIAEaAA9uYW1lAAADIAAAASkAAAIWm5e+CnBvc3QAAARMAAAATQAAAG/8EX8xeJxjYGRgYOBiMGCwY2BycfMJYeDLSSzJY5BiYGGAAJA8MpsxJzM9kYEDxgPKsYBpDiA2A9NMDGwMMkAWF1CGFchmB4pxAnncDDxAOQ4kUV4GPqA6RgZmAE91Bj94nGNgZJBmnMDAysDAUMfQAyRloHQCAyeDMQMDEwMrMwNWEJDmmsJwgEH3IxPDCSBXCEwyMDCCCABbKQhrAAAAeJzNkksKwjAQhr+kvqpVxIUL8Qh6KFG3KtLidVx5Bq/VE+g/ySCIILhzhq+Qv8lkHgG6QCFWogPhRsDsKjUkvWCY9A611jOmUiJrNuw5cabh0sbHQ/9M23KQVksLSXu3oPPmcxbypRwGilxQ0qPSTRNl1GfMSHujDvQ+Yny3wY/7SXUX5eueaphSsAz+xar0vftqgnU6Y9VuHE1P3c/YRHdOKfaOVXlwLOrR0YQ1y4zFPzv2OmqnLxpnLC6O+tSGjL2YNmaITyYUHqgAeJxjYGQAgZUM0xmYGBjMlcVXNjtO9wCKoImbA8X9geIAqRwH2QAAAHicY2BkYGAA4hwJ4Yp4fpuvDNwMJ4ACUZyP9zUgaCBYyTAdSHIwMIE4ABioCdgAAHicY2BkYGA4wcAAJ1cyMDKgAn4AOLICS3icY2AAghNQTCIAAFMMAZF4nGNgAAIeBglcEAARPAFFeJxjYGRgYOBnYGYA0QwMTEDMBYQMDP/BfAYACkEBKgB4nGWQPW7CQBSEx2BIAlKCFCkps1UKIpmfkgNAT0GXwpi1MbK91npBossJcoQcIaeIcoIcKGPzaGAtP38zb97uygAG+IWHenm4bWq9WrihOnGb9CDsk5+FO+jjRbhLfyjcwxumwn084p07eP4dnQFK4Rbu8SHcpv8p7JO/hDt4wrdwl/6PcA8r/An38eoN08gUsSncUif7LLRnef6utK1SU6hJMD5bC11oGzq9Ueujqg7J1LlYxdbkas6uzjKjSmt2OnLB1rlyNhrF4geRyZEigkGBuKkOS2gk2CNDCHvVvdQrpi0q+rVWmCDA+Cq1YKpokiGVxobJNY6sFQ48bUrXMa34Ws7kpLnMat4kIyv+77q3oxPRD7BtpkrMMOITX+SD5g75Pz0RXqgAAAB4nF3GOQ6AIBQA0T+44YoX4VAEaNEYCNe3IDa+ZkaUNF//DIqOnoGRCc3MwsrGzoHhlMW7J2Ybrpp023LjcTxEMpbARSVRuEVebe8MtgAAAA==) format("woff")}[class*=" luna-data-grid-icon-"],[class^=luna-data-grid-icon-]{display:inline-block;font-family:luna-data-grid-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-data-grid-icon-caret-down:before{content:""}.luna-data-grid-icon-caret-up:before{content:""}.luna-data-grid{position:relative;border:1px solid;overflow:hidden;outline:0;color:#000000e0;color:var(--luna-color-text,rgba(0,0,0,.88));background-color:#fff;background-color:var(--luna-color-bg-container,#fff);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-family:var(--luna-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;user-select:none;font-size:14px}.luna-data-grid .luna-data-grid-hidden,.luna-data-grid.luna-data-grid-hidden{display:none!important}.luna-data-grid .luna-data-grid-invisible,.luna-data-grid.luna-data-grid-invisible{visibility:hidden}.luna-data-grid *{box-sizing:border-box}.luna-data-grid.luna-data-grid-theme-dark{color-scheme:dark;color:#ffffffd9;color:var(--luna-color-text-dark,rgba(255,255,255,.85));background-color:#141414;background-color:var(--luna-color-bg-container-dark,#141414)}.luna-data-grid{font-size:12px}.luna-data-grid table{width:100%;min-height:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}.luna-data-grid td,.luna-data-grid th{padding:1px 4px;border-left:1px solid;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.luna-data-grid td:first-child,.luna-data-grid th:first-child{border-left:none}.luna-data-grid th{font-weight:400;border-bottom:1px solid;text-align:left;position:relative}.luna-data-grid th.luna-data-grid-sortable{padding-right:12px}.luna-data-grid th .luna-data-grid-icon-caret-down,.luna-data-grid th .luna-data-grid-icon-caret-up{font-size:12px;position:absolute;display:none;top:6px;right:2px}.luna-data-grid td{height:20px;cursor:default;-webkit-user-select:text;-moz-user-select:text;user-select:text}.luna-data-grid:focus .luna-data-grid-node.luna-data-grid-selectable.luna-data-grid-selected{color:#fff}.luna-data-grid-data-container,.luna-data-grid-header-container{overflow:hidden}.luna-data-grid-header-container{height:21px}.luna-data-grid-data-container{overflow-y:auto;position:relative}.luna-data-grid-data-space{min-height:100%}.luna-data-grid-data{position:absolute;left:0;top:0}.luna-data-grid-filler-row td{height:auto}.luna-data-grid-resizer{position:absolute;top:0;bottom:0;width:5px;z-index:500;touch-action:none;cursor:col-resize}.luna-data-grid-resizing,.luna-data-grid-resizing .luna-data-grid *{cursor:col-resize!important}.luna-data-grid-theme-light,.luna-data-grid-theme-light td,.luna-data-grid-theme-light th{border-color:#d9d9d9;border-color:var(--luna-color-border,#d9d9d9)}.luna-data-grid-theme-light th{background-color:#0000000f;background-color:var(--luna-color-fill-secondary,rgba(0,0,0,.06))}.luna-data-grid-theme-light th.luna-data-grid-sortable:hover{background-color:#00000026;background-color:var(--luna-color-fill,rgba(0,0,0,.15))}.luna-data-grid-theme-light .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selectable:hover,.luna-data-grid-theme-light .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selected{background-color:#ddd}.luna-data-grid-theme-light .luna-data-grid-data-container tr:nth-child(2n){background-color:#f2f7fd}.luna-data-grid-theme-light:focus .luna-data-grid-node.luna-data-grid-selectable.luna-data-grid-selected{background-color:#1a73e8;background-color:var(--luna-color-primary,#1a73e8)}.luna-data-grid-theme-dark,.luna-data-grid-theme-dark td,.luna-data-grid-theme-dark th{border-color:#424242;border-color:var(--luna-color-border,#424242)}.luna-data-grid-theme-dark th{background-color:#ffffff1f;background-color:var(--luna-color-fill-secondary,rgba(255,255,255,.12))}.luna-data-grid-theme-dark th.luna-data-grid-sortable:hover{background-color:#ffffff2e;background-color:var(--luna-color-fill,rgba(255,255,255,.18))}.luna-data-grid-theme-dark .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selectable:hover,.luna-data-grid-theme-dark .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selected{background-color:#393939}.luna-data-grid-theme-dark .luna-data-grid-data-container tr:nth-child(2n){background-color:#0b2544}.luna-data-grid-theme-dark:focus .luna-data-grid-node.luna-data-grid-selectable.luna-data-grid-selected{background-color:#1965c8;background-color:var(--luna-color-primary,#1965c8)}@font-face{font-family:luna-dom-viewer-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAS8AAsAAAAAB7QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAGEAAACMISgl+k9TLzIAAAFsAAAAPQAAAFZLxUkWY21hcAAAAawAAADWAAACdBU42qdnbHlmAAAChAAAAC4AAAAwabU7V2hlYWQAAAK0AAAALwAAADZzjr4faGhlYQAAAuQAAAAYAAAAJAFyANlobXR4AAAC/AAAABAAAABAAZAAAGxvY2EAAAMMAAAAEAAAACIAtACobWF4cAAAAxwAAAAfAAAAIAEbAA9uYW1lAAADPAAAASkAAAIWm5e+CnBvc3QAAARoAAAAUwAAAHZW8MNZeJxNjTsOQFAQRc/z/+sV1mABohKV0gZeJRJR2X9cT4RJZu7nFIMBMjoGvHGaF6rdngcNAc/c/O/Nvq2W5E1igdNE2zv1iGh1c5FQPlYXUlJRyxt9+/pUKadQa/AveGEGZQAAAHicY2BkkGScwMDKwMBQx9ADJGWgdAIDJ4MxAwMTAyszA1YQkOaawnCAQfcjE8MJIFcITDIwMIIIAFqDCGkAAAB4nM2STQ4BQRCFv54ZP8MwFhYW4gQcShBsSERi50BWDuFCcwJedddKRGKnOt8k9aanqudVAy0gF3NRQLgTsLhJDVHP6UW94Kp8zEhKwYIlG/YcOXHm0mTPp96aumLLwdUQ1fcIqmJrwpSZL+iqak5JmyE1Ayr1bdGhr/2ZPmp/qPQtuj/uJzqQl+pfDyypesQD6AT/ElV8PjyrMccT9rdLR3PUFBI227VTio1jbm6dodg5VnPvmAsHxzofHfmi+Sbs/pwdWcXFkWdNSNg9arIE2QufuSCyAAB4nGNgZACBlQzTGZgYGMyVxVc2O073AIpAxHsYloHFRc2dPZY2OTIwAACmEQesAAB4nGNgZGBgAOINe2b6x/PbfGXgZjgBFIjifLyvAUEDwUqGZUCSg4EJxAEAUn4LLAB4nGNgZGBgOMHAACdXMjAyoAIBADizAkx4nGNgAIITUEwGAABZUAGReJxjYAACHgYJ3BAAE94BXXicY2BkYGAQYGBmANEMDExAzAWEDAz/wXwGAApcASsAeJxlkD1uwkAUhMdgSAJSghQpKbNVCiKZn5IDQE9Bl8KYtTGyvdZ6QaLLCXKEHCGniHKCHChj82hgLT9/M2/e7soABviFh3p5uG1qvVq4oTpxm/Qg7JOfhTvo40W4S38o3MMbpsJ9POKdO3j+HZ0BSuEW7vEh3Kb/KeyTv4Q7eMK3cJf+j3APK/wJ9/HqDdPIFLEp3FIn+yy0Z3n+rrStUlOoSTA+WwtdaBs6vVHro6oOydS5WMXW5GrOrs4yo0prdjpywda5cjYaxeIHkcmRIoJBgbipDktoJNgjQwh71b3UK6YtKvq1VpggwPgqtWCqaJIhlcaGyTWOrBUOPG1K1zGt+FrO5KS5zGreJCMr/u+6t6MT0Q+wbaZKzDDiE1/kg+YO+T89EV6oAAAAeJxdxjkOgCAUANE/uOOGB+FQBIjaaEJIuL6FsfE1M6Lk9fXPoKioaWjp6BnQjEzMLKwYNtHepZhtuMs1vpvO/ch4HIlIxhK4KVyc7BwiD8nvDlkA) format("woff")}[class*=" luna-dom-viewer-icon-"],[class^=luna-dom-viewer-icon-]{display:inline-block;font-family:luna-dom-viewer-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-dom-viewer-icon-caret-down:before{content:""}.luna-dom-viewer-icon-caret-right:before{content:""}.luna-dom-viewer{padding:0 0 0 12px;cursor:default;list-style:none;min-width:100%;color:#000000e0;color:var(--luna-color-text,rgba(0,0,0,.88));background-color:#0000;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-family:var(--luna-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;user-select:none;font-size:14px}.luna-dom-viewer .luna-dom-viewer-hidden,.luna-dom-viewer.luna-dom-viewer-hidden{display:none}.luna-dom-viewer .luna-dom-viewer-invisible,.luna-dom-viewer.luna-dom-viewer-invisible{visibility:hidden}.luna-dom-viewer *{box-sizing:border-box}.luna-dom-viewer.luna-dom-viewer-theme-dark{color-scheme:dark;color:#ffffffd9;color:var(--luna-color-text-dark,rgba(255,255,255,.85));background-color:#0000}.luna-dom-viewer{font-size:12px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace}.luna-dom-viewer ul{display:inline-block}.luna-dom-viewer-toggle{min-width:12px;margin-left:-12px}.luna-dom-viewer-icon-caret-down,.luna-dom-viewer-icon-caret-right{position:absolute!important;font-size:12px!important}.luna-dom-viewer-tree-item{min-width:200px;line-height:16px;min-height:16px;position:relative;z-index:10;outline:0}.luna-dom-viewer-tree-item.luna-dom-viewer-selected .luna-dom-viewer-selection,.luna-dom-viewer-tree-item:hover .luna-dom-viewer-selection{display:block}.luna-dom-viewer-tree-item .luna-dom-viewer-icon-caret-down{display:none}.luna-dom-viewer-tree-item.luna-dom-viewer-expanded .luna-dom-viewer-icon-caret-down{display:inline-block}.luna-dom-viewer-tree-item.luna-dom-viewer-expanded .luna-dom-viewer-icon-caret-right{display:none}.luna-dom-viewer-attribute-value{word-break:break-all}.luna-dom-viewer-attribute-value.luna-dom-viewer-attribute-underline{text-decoration:underline}.luna-dom-viewer-selection{position:absolute;display:none;left:-10000px;right:0;top:0;bottom:0;z-index:-1}.luna-dom-viewer-children{margin:0;overflow-x:visible;overflow-y:visible;padding-left:15px}.luna-dom-viewer-theme-light .luna-dom-viewer-icon-caret-down,.luna-dom-viewer-theme-light .luna-dom-viewer-icon-caret-right{color:#9aa0a6}.luna-dom-viewer-theme-light .luna-dom-viewer-html-tag,.luna-dom-viewer-theme-light .luna-dom-viewer-tag-name{color:#881280}.luna-dom-viewer-theme-light .luna-dom-viewer-attribute-name{color:#994500}.luna-dom-viewer-theme-light .luna-dom-viewer-attribute-value{color:#1a1aa6}.luna-dom-viewer-theme-light .luna-dom-viewer-html-comment{color:#236e25}.luna-dom-viewer-theme-light .luna-dom-viewer-tree-item:hover .luna-dom-viewer-selection{background:#e8eaed}.luna-dom-viewer-theme-light .luna-dom-viewer-tree-item.luna-dom-viewer-selected .luna-dom-viewer-selection{background:#e0e0e0}.luna-dom-viewer-theme-light .luna-dom-viewer-tree-item.luna-dom-viewer-selected:focus .luna-dom-viewer-selection{background:#cfe8fc}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node{word-break:break-all}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-keyword{color:#881280}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-number{color:#1c00cf}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-operator{color:gray}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-comment{color:#236e25}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-string{color:#1a1aa6}.luna-dom-viewer-theme-dark{color:#e8eaed}.luna-dom-viewer-theme-dark .luna-dom-viewer-icon-caret-down,.luna-dom-viewer-theme-dark .luna-dom-viewer-icon-caret-right{color:#9aa0a6}.luna-dom-viewer-theme-dark .luna-dom-viewer-html-tag,.luna-dom-viewer-theme-dark .luna-dom-viewer-tag-name{color:#5db0d7}.luna-dom-viewer-theme-dark .luna-dom-viewer-attribute-name{color:#9bbbdc}.luna-dom-viewer-theme-dark .luna-dom-viewer-attribute-value{color:#f29766}.luna-dom-viewer-theme-dark .luna-dom-viewer-html-comment{color:#898989}.luna-dom-viewer-theme-dark .luna-dom-viewer-tree-item:hover .luna-dom-viewer-selection{background:#083c69}.luna-dom-viewer-theme-dark .luna-dom-viewer-tree-item.luna-dom-viewer-selected .luna-dom-viewer-selection{background:#454545}.luna-dom-viewer-theme-dark .luna-dom-viewer-tree-item.luna-dom-viewer-selected:focus .luna-dom-viewer-selection{background:#073d69}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node{word-break:break-all}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-keyword{color:#e36eec}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-number{color:#9980ff}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-operator{color:#7f7f7f}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-comment{color:#747474}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-string{color:#f29766}
-</style><script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <title>DGM Consulting LLC - Risk Management for Small Businesses</title>
+    <meta name="description" content="DGM Consulting LLC offers comprehensive risk assessment and mitigation strategies for small businesses, focusing on financial stability and operational efficiency.">
     <style>
         :root {
-            --color-orange: #ea5f00;
-            --color-orange-light: #f97316;
-            --color-orange-dark: #c2410c;
-            --color-green: #16a34a;
-            --color-green-light: #22c55e;
-            --color-green-dark: #15803d;
-            --color-cream: #fef7ed;
-            --color-light-green: #f0fdf4;
+            --color-primary: #000000;
+            --color-secondary: #ffffff;
+            --color-text: #000000;
+            --color-background: #ffffff;
+            --color-border: #e5e5e5;
+            --color-accent: #f8f9fa;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --max-width: 1200px;
         }
-        .phone-frame {
-            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-            box-shadow: 
-                0 0 40px rgba(0,0,0,0.3),
-                inset 0 0 0 1px rgba(255,255,255,0.1);
-            min-width: 320px;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .screen {
-            background: linear-gradient(180deg, #ffffff 0%, var(--color-cream) 100%);
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
         }
-        .charging-pulse {
-            animation: chargingPulse 2s infinite;
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
         }
-        @keyframes chargingPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
+
+        header {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border);
         }
-        .battery-fill {
-            animation: batteryFill 3s infinite;
-        }
-        @keyframes batteryFill {
-            0% { width: 20%; }
-            50% { width: 80%; }
-            100% { width: 20%; }
-        }
-        .status-dot {
-            animation: statusPulse 2s infinite;
-        }
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(234, 95, 0, 0.08);
-        }
-        .flow-container {
+
+        .header-content {
             display: flex;
-            gap: 2rem;
-            padding: 2rem;
-            overflow-x: auto;
-            min-height: 100vh;
+            justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, var(--color-cream) 0%, #fff7ed 100%);
         }
-        .flow-section {
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav {
             display: flex;
-            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: var(--spacing-md);
+            transition: opacity 0.2s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        .app-store-badge {
+            margin-top: var(--spacing-sm);
+        }
+
+        .app-store-badge img {
+            height: 60px;
+            border-radius: 8px;
+        }
+
+        .features {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--color-accent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .feature {
+            background-color: var(--color-secondary);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+
+        .feature h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
             align-items: center;
-            margin-bottom: 2rem;
         }
-        .flow-title {
-            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-dark));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            font-size: 0.875rem;
-            box-shadow: 0 8px 25px rgba(234, 95, 0, 0.15);
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
         }
-        .phone-grid {
+
+        .about-text p {
+            margin-bottom: var(--spacing-sm);
+            color: #666;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .services {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--color-accent);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service {
+            background-color: var(--color-secondary);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-sm);
+            background-color: var(--color-accent);
+            border-radius: 50%;
             display: flex;
-            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
         }
-        .sleek-button {
-            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-dark));
-            border: none;
-            box-shadow: 0 4px 15px rgba(234, 95, 0, 0.3);
-            transition: all 0.3s ease;
+
+        .contact {
+            padding: var(--spacing-lg) 0;
+            text-align: center;
         }
-        .sleek-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(234, 95, 0, 0.4);
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
         }
-        .sleek-button-green {
-            background: linear-gradient(135deg, var(--color-green), var(--color-green-dark));
-            border: none;
-            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
-            transition: all 0.3s ease;
+
+        .contact p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: var(--spacing-md);
         }
-        .sleek-button-green:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            padding: var(--spacing-md) 0;
+            text-align: center;
         }
-        .sleek-input {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(234, 95, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        .sleek-input:focus {
-            background: rgba(255, 255, 255, 1);
-            border-color: var(--color-orange);
-            box-shadow: 0 0 0 3px rgba(234, 95, 0, 0.1);
-        }
-        .sleek-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(234, 95, 0, 0.05);
-            box-shadow: 0 8px 32px rgba(234, 95, 0, 0.04);
-        }
-        .logo-container {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-        .orange-accent {
-            color: var(--color-orange);
-        }
-        .green-accent {
-            color: var(--color-green);
-        }
-        .orange-bg {
-            background-color: var(--color-orange);
-        }
-        .green-bg {
-            background-color: var(--color-green);
-        }
-        .orange-gradient {
-            background: linear-gradient(135deg, var(--color-orange), var(--color-orange-dark));
-        }
-        .green-gradient {
-            background: linear-gradient(135deg, var(--color-green), var(--color-green-dark));
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .nav {
+                display: none;
+            }
+            
+            .header-content {
+                justify-content: center;
+            }
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.-right-1{right:-0.25rem}.-top-1{top:-0.25rem}.left-3{left:0.75rem}.top-3\.5{top:0.875rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-16{margin-top:4rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.grid{display:grid}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-24{height:6rem}.h-28{height:7rem}.h-3{height:0.75rem}.h-32{height:8rem}.h-4{height:1rem}.h-48{height:12rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-\[600px\]{height:600px}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-20{width:5rem}.w-24{width:6rem}.w-28{width:7rem}.w-3{width:0.75rem}.w-32{width:8rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-80{width:20rem}.w-full{width:100%}.flex-1{flex:1 1 0%}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.resize-none{resize:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-\[3rem\]{border-radius:3rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-sm{border-radius:0.125rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-t{border-top-width:1px}.border-blue-200{--tw-border-opacity:1;border-color:rgb(191 219 254 / var(--tw-border-opacity, 1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-green-100{--tw-border-opacity:1;border-color:rgb(220 252 231 / var(--tw-border-opacity, 1))}.border-green-200{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.border-orange-100{--tw-border-opacity:1;border-color:rgb(255 237 213 / var(--tw-border-opacity, 1))}.border-orange-200{--tw-border-opacity:1;border-color:rgb(254 215 170 / var(--tw-border-opacity, 1))}.border-orange-500{--tw-border-opacity:1;border-color:rgb(249 115 22 / var(--tw-border-opacity, 1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-green-50{--tw-bg-opacity:1;background-color:rgb(240 253 244 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-orange-100{--tw-bg-opacity:1;background-color:rgb(255 237 213 / var(--tw-bg-opacity, 1))}.bg-orange-50{--tw-bg-opacity:1;background-color:rgb(255 247 237 / var(--tw-bg-opacity, 1))}.bg-orange-500{--tw-bg-opacity:1;background-color:rgb(249 115 22 / var(--tw-bg-opacity, 1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-300{--tw-bg-opacity:1;background-color:rgb(203 213 225 / var(--tw-bg-opacity, 1))}.bg-slate-400{--tw-bg-opacity:1;background-color:rgb(148 163 184 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-yellow-50{--tw-bg-opacity:1;background-color:rgb(254 252 232 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-100{--tw-gradient-from:#dbeafe var(--tw-gradient-from-position);--tw-gradient-to:rgb(219 234 254 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-50{--tw-gradient-from:#f0fdf4 var(--tw-gradient-from-position);--tw-gradient-to:rgb(240 253 244 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-orange-50{--tw-gradient-from:#fff7ed var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 247 237 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-slate-50{--tw-gradient-from:#f8fafc var(--tw-gradient-from-position);--tw-gradient-to:rgb(248 250 252 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-green-100{--tw-gradient-to:#dcfce7 var(--tw-gradient-to-position)}.to-orange-100{--tw-gradient-to:#ffedd5 var(--tw-gradient-to-position)}.to-slate-100{--tw-gradient-to:#f1f5f9 var(--tw-gradient-to-position)}.to-slate-50{--tw-gradient-to:#f8fafc var(--tw-gradient-to-position)}.object-contain{object-fit:contain}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pl-10{padding-left:2.5rem}.pt-2{padding-top:0.5rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-green-700{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.text-orange-600{--tw-text-opacity:1;color:rgb(234 88 12 / var(--tw-text-opacity, 1))}.text-orange-700{--tw-text-opacity:1;color:rgb(194 65 12 / var(--tw-text-opacity, 1))}.text-orange-800{--tw-text-opacity:1;color:rgb(154 52 18 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.text-yellow-600{--tw-text-opacity:1;color:rgb(202 138 4 / var(--tw-text-opacity, 1))}.placeholder-slate-500::placeholder{--tw-placeholder-opacity:1;color:rgb(100 116 139 / var(--tw-placeholder-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script></head>
-<body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-    
-    <div class="flow-container">
-        
-        <!-- ONBOARDING FLOW -->
-        <div class="flow-section">
-            <div class="flow-title">1. ONBOARDING FLOW</div>
-            <div class="phone-grid">
-                
-                <!-- Screen 1: Splash Screen -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col justify-center items-center">
-                        <div class="w-32 h-32 rounded-[3rem] flex items-center justify-center mb-8 logo-container">
-                            <img src="https://public.youware.com/users-website-assets/prod/0c600d13-a24b-41cf-b436-ce6ee551a083/b4ea7f8cb6244e53bc62dedea905f895.png" alt="HelioSource Logo" class="w-28 h-28 object-contain">
-                        </div>
-                        <h1 class="text-4xl font-light text-slate-900 text-center mb-3">HelioSource</h1>
-                        <p class="text-xl orange-accent font-medium text-center">EV Mobile Charging</p>
-                        
-                        <div class="mt-16">
-                            <div class="w-2 h-2 orange-bg rounded-full mx-auto animate-bounce"></div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-8">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
+<style>@font-face{font-family:luna-console-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAaoAAsAAAAACnAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAIsAAADcIw4ngk9TLzIAAAGUAAAAPgAAAFZWmlGRY21hcAAAAdQAAAD4AAACyDWnbdFnbHlmAAACzAAAAZsAAAH8Lq6nDGhlYWQAAARoAAAAMQAAADZ25cSzaGhlYQAABJwAAAAdAAAAJAgCBBRobXR4AAAEvAAAABcAAABYGAH//GxvY2EAAATUAAAAGAAAAC4JNAjUbWF4cAAABOwAAAAfAAAAIAEjAFBuYW1lAAAFDAAAASkAAAIWm5e+CnBvc3QAAAY4AAAAcAAAAJ7p9v7ZeJxNjT0OgkAQhb9FFllBFMHGwjN4AipiZckFaDAmxIojeHDf7oboTObvvZk3GGDHjY6kvz8Gqnlc3lxIieb5/97Mr+dIvk7i0lBzxQfLkZ6BiYWEjKtyIc7pR0GpWnOiUW+E/PA9FQfdRj0r3AlxYc7kZ221IXtko/C3cd+Grytr2UrTq9VfrRAJ0wB4nGNgZBRnnMDAysDA1Ml0hoGBoR9CM75mMGLkAIoysDIzYAUBaa4pDAcYdD+ysYC4MSxMYGFGEAEAtDUIzAAAeJzN0s1OwkAUhuF36A8gtBYKiQsXxrVeFEGibJAQCPfgBbnypuYK8Dszx40xJu48kyekH+3M6XSACijkQUoIHwSs3pWGlBdcpbzkTdcLOiUlj6zYsGXPgRPnWF8u+tfSNc/slB6VhpR+r6BZbNxwy53GvQZMGTGk0WpzemZap9U9YyYsudYzg7RuRa0J6h9m/a2mf7zfSt006qWf2UXXplask/9S6Z3C15stsd3PLFu5kazdUJ5cIxun76tvls3lxfWydbYLO9fJq2tl7xZycGM5uomcnPV5dtrLGDI7a3GQYb9FZmczlpmdz1hldm5jnVF/Akk1KvR4nF1RTW8TMRCdZ3udBsSWBcdLG9UlG623pKihaeIIIZVUiHOknlAVNQgu0Jx6oB9/olz4BUXiyv+AAxz4BT1wRIJDT+wG7woQwhqN3vi9Nx6NCeQPf8oDYkRogU/z5xhzUbz2ZcmxD3xccRHwBId8nD/D2FvmOZHgglFIy9QmSrEBWYM02Gr1toG+6+lGpGRiB3Fiy0pJ/q2YKOeUz3W3zu+tu3r+0XSMj61mmro0fcPv2mbT/vyS7Vi7w/YaxjSKd2W+TAfWDtJqpPncvw1B1KFHfjK5CJltILMP0fVTOL0KH0OnY73IYl0LUZNd2C5SFRvEujfc9my/siQVi8vrrQe3Vq7dYEK9SnYjdvtO9JIJfqrvS9E4uHocXxE6XFIzJlherGVnk+nn6eQsW/sH4r3v8Vt31NqNOqssOmBBcBLfNMtqtnASr4Rl/xmT4vGL/90VpD87/8T3KfA7zeoYAocjmOJihP1zD2BGxTmVP+LT90oXeuWwjgyB0j3Xt4nEj1FxUSrf4muy2W5vJn+tbCkpb7z7FwBKXUkAeJxjYGRgYADikOXX2uP5bb4ycLOABKI4H+9rgNH//zIwsDCzMAElOBhAJAMASwoLJgAAAHicY2BkYGBhAAEWhv9///9lYWZgZEAFYgBbLQQgAAAAeJxjYGBgYIHj/3+B+D+MTwkAACOnBBMAeJxjYAACPgYZhiiGEwx3GP7hhwBJdRIJeJxjYGRgYBBjcGFgZgABJiDmAkIGhv9gPgMAEYUBdAB4nGWQPW7CQBSEx2BIAlKCFCkps1UKIpmfkgNAT0GXwpi1MbK91npBossJcoQcIaeIcoIcKGPzaGAtP38zb97uygAG+IWHenm4bWq9WrihOnGb9CDsk5+FO+jjRbhLfyjcwxumwn084p07eP4dnQFK4Rbu8SHcpv8p7JO/hDt4wrdwl/6PcA8r/An38eoN08gUsSncUif7LLRnef6utK1SU6hJMD5bC11oGzq9Ueujqg7J1LlYxdbkas6uzjKjSmt2OnLB1rlyNhrF4geRyZEigkGBuKkOS2gk2CNDCHvVvdQrpi0q+rVWmCDA+Cq1YKpokiGVxobJNY6sFQ48bUrXMa34Ws7kpLnMat4kIyv+77q3oxPRD7BtpkrMMOITX+SD5g75Pz0RXqgAAAB4nG3GSw6CMBRA0XeRohb/H1wFi2qAQCcteWnT7WvC1DO5VyrZWPmvo2JHjaFhz4EjlpYTZy5cuXHnwZMXbzo+YgenU+rHWEK7rfp5SXVxGsykGtX4sObUxJx+YcChTCR6RiKFgGdmYSWLfAGgdBim) format("woff")}[class^=luna-console-icon-],[class*=" luna-console-icon-"]{display:inline-block;font-family:luna-console-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-console-icon-caret-down:before{content:""}.luna-console-icon-caret-right:before{content:""}.luna-console-icon-warn:before{content:""}.luna-console-icon-error:before{content:""}.luna-console-icon-input:before{content:""}.luna-console-icon-output:before{content:""}.luna-console{background:#fff;overflow-y:auto;-webkit-overflow-scrolling:touch;height:100%;position:relative;will-change:scroll-position;cursor:default;font-size:12px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace}.luna-console.luna-console-theme-dark{background-color:#141414}.luna-console-hidden{display:none!important}.luna-console-fake-logs{position:absolute;left:0;top:0;pointer-events:none;visibility:hidden;width:100%}.luna-console-logs{padding-top:1px;position:absolute;width:100%}.luna-console-log-container{box-sizing:content-box;padding:0 8px}.luna-console-log-container.luna-console-error{background:#fff0f0}.luna-console-log-container.luna-console-warn{background:#fffbe5}.luna-console-log-container.luna-console-selected{background:#ecf1f8}.luna-console-log-container.luna-console-selected:not(.luna-console-error):not(.luna-console-warn){border-color:#ccdef5}.luna-console-log-container.luna-console-selected .luna-console-log-item{background:#ecf1f8}.luna-console-log-container.luna-console-selected .luna-console-log-item:not(.luna-console-error):not(.luna-console-warn){border-color:#ccdef5}.luna-console-header{white-space:nowrap;display:flex;font-size:11px;color:#545454;border-top:1px solid transparent;border-bottom:1px solid rgba(0,0,0,.06)}.luna-console-header .luna-console-time-from-container{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:3px 10px}.luna-console-nesting-level{width:14px;flex-shrink:0;margin-top:-1px;margin-bottom:-1px;position:relative;border-right:1px solid rgba(0,0,0,.06)}.luna-console-nesting-level.luna-console-group-closed:before{content:""}.luna-console-nesting-level:before{border-bottom:1px solid rgba(0,0,0,.06);position:absolute;top:0;left:0;margin-left:100%;width:5px;height:100%;box-sizing:border-box}.luna-console-log-item{position:relative;display:flex;align-items:flex-start;border-top:1px solid transparent;border-bottom:1px solid rgba(0,0,0,.06);margin-top:-1px;color:#333;padding:8px 102px 8px 0}.luna-console-log-item:after{content:"";display:block;clear:both}.luna-console-log-item .luna-console-code{display:inline;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace}.luna-console-log-item .luna-console-code .luna-console-keyword{color:#881280}.luna-console-log-item .luna-console-code .luna-console-number{color:#1c00cf}.luna-console-log-item .luna-console-code .luna-console-operator{color:gray}.luna-console-log-item .luna-console-code .luna-console-comment{color:#236e25}.luna-console-log-item .luna-console-code .luna-console-string{color:#1a1aa6}.luna-console-log-item a{color:#15c!important}.luna-console-log-item .luna-console-icon-container{margin:0 -6px 0 10px;display:flex;align-items:center;min-height:22px}.luna-console-log-item .luna-console-icon-container .luna-console-icon{line-height:1;font-size:12px;color:#333;position:relative}.luna-console-log-item .luna-console-icon-container .luna-console-icon-caret-right,.luna-console-log-item .luna-console-icon-container .luna-console-icon-caret-down{top:0;left:-2px}.luna-console-log-item .luna-console-icon-container .luna-console-icon-error{top:0;color:#ef3842}.luna-console-log-item .luna-console-icon-container .luna-console-icon-warn{top:0;color:#e8a400}.luna-console-log-item .luna-console-count{background:#8097bd;color:#fff;padding:2px 4px;border-radius:10px;font-size:12px;float:left;margin:1px -6px 0 10px}.luna-console-log-item .luna-console-log-content-wrapper{flex:1;overflow:hidden}.luna-console-log-item .luna-console-add-to-chat-btn{position:absolute;top:8px;right:8px;background:#0000000f;border-radius:8px;padding:5px 8px;font-family:monospace;font-size:12px;font-weight:400;color:#000000f2;cursor:pointer;-webkit-user-select:none;user-select:none;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .2s ease}.luna-console-log-item .luna-console-add-to-chat-btn span{line-height:1.2;letter-spacing:-.04em}.luna-console-log-item.luna-console-error .luna-console-add-to-chat-btn{background:#d427273d}.luna-console-log-item.luna-console-warn .luna-console-add-to-chat-btn{background:#ffc3003d}.luna-console-log-item .luna-console-log-content{padding:3px 0;margin:0 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:pre-wrap;-webkit-user-select:text;user-select:text}.luna-console-log-item .luna-console-log-content *{-webkit-user-select:text;user-select:text}.luna-console-log-item .luna-console-log-content>*{vertical-align:top}.luna-console-log-item .luna-console-log-content .luna-console-undefined,.luna-console-log-item .luna-console-log-content .luna-console-null{color:#5e5e5e}.luna-console-log-item .luna-console-log-content .luna-console-number{color:#1c00cf}.luna-console-log-item .luna-console-log-content .luna-console-boolean{color:#0d22aa}.luna-console-log-item .luna-console-log-content .luna-console-symbol,.luna-console-log-item .luna-console-log-content .luna-console-regexp{color:#881391}.luna-console-log-item .luna-console-data-grid,.luna-console-log-item .luna-console-dom-viewer{white-space:initial}.luna-console-log-item.luna-console-error{z-index:50;background:#fff0f0;color:#720000;border-top:1px solid #ffd6d6;border-bottom:1px solid #ffd6d6}.luna-console-log-item.luna-console-error .luna-console-stack{padding-left:1.2em;white-space:nowrap}.luna-console-log-item.luna-console-error .luna-console-count{background:#720000}.luna-console-log-item.luna-console-debug{z-index:20}.luna-console-log-item.luna-console-input{border-bottom-color:transparent}.luna-console-log-item.luna-console-warn{z-index:40;color:#5c5c00;background:#fffbe5;border-top:1px solid #fff5c2;border-bottom:1px solid #fff5c2}.luna-console-log-item.luna-console-warn .luna-console-count{background:#e8a400}.luna-console-log-item.luna-console-info{z-index:30}.luna-console-log-item.luna-console-group,.luna-console-log-item.luna-console-groupCollapsed{font-weight:700}.luna-console-preview{display:inline-block}.luna-console-preview .luna-console-preview-container{display:flex;align-items:center}.luna-console-preview .luna-console-json{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-left:12px}.luna-console-preview .luna-console-preview-icon-container{display:block}.luna-console-preview .luna-console-preview-icon-container .luna-console-icon{position:relative;font-size:12px}.luna-console-preview .luna-console-preview-icon-container .luna-console-icon-caret-down{top:2px}.luna-console-preview .luna-console-preview-icon-container .luna-console-icon-caret-right{top:1px}.luna-console-preview .luna-console-preview-content-container{word-break:break-all}.luna-console-preview .luna-console-descriptor,.luna-console-preview .luna-console-object-preview{font-style:italic}.luna-console-preview .luna-console-key{color:#881391}.luna-console-preview .luna-console-number{color:#1c00cf}.luna-console-preview .luna-console-null{color:#5e5e5e}.luna-console-preview .luna-console-string{color:#c41a16}.luna-console-preview .luna-console-boolean{color:#0d22aa}.luna-console-preview .luna-console-special{color:#5e5e5e}.luna-console-theme-dark{color-scheme:dark}.luna-console-theme-dark .luna-console-log-container.luna-console-selected .luna-console-log-item{background:#29323d}.luna-console-theme-dark .luna-console-log-container.luna-console-selected .luna-console-log-item:not(.luna-console-error):not(.luna-console-warn){border-color:#4173b4}.luna-console-theme-dark .luna-console-log-item{color:#a5a5a5;border-bottom-color:#3d3d3d}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-keyword{color:#e36eec}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-number{color:#9980ff}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-operator{color:#7f7f7f}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-comment{color:#747474}.luna-console-theme-dark .luna-console-log-item .luna-console-code .luna-console-string{color:#f29766}.luna-console-theme-dark .luna-console-log-item.luna-console-error{background:#290000;color:#ff8080;border-top-color:#5c0000;border-bottom-color:#5c0000}.luna-console-theme-dark .luna-console-log-item.luna-console-error .luna-console-count{background:#ff8080}.luna-console-theme-dark .luna-console-log-item.luna-console-warn{color:#ffcb6b;background:#332a00;border-top-color:#650;border-bottom-color:#650}.luna-console-theme-dark .luna-console-log-item .luna-console-count{background:#42597f;color:#949494}.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-undefined,.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-null{color:#7f7f7f}.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-number,.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-boolean{color:#9980ff}.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-symbol,.luna-console-theme-dark .luna-console-log-item .luna-console-log-content .luna-console-regexp{color:#e36eec}.luna-console-theme-dark .luna-console-log-item .luna-console-add-to-chat-btn{background:#d427274d;color:#ffffffe6}.luna-console-theme-dark .luna-console-log-item .luna-console-add-to-chat-btn:hover{background:#d4272773}.luna-console-theme-dark .luna-console-icon-container .luna-console-icon-caret-right,.luna-console-theme-dark .luna-console-icon-container .luna-console-icon-caret-down{color:#9aa0a6}.luna-console-theme-dark .luna-console-header{border-bottom-color:#3d3d3d}.luna-console-theme-dark .luna-console-nesting-level{border-right-color:#3d3d3d}.luna-console-theme-dark .luna-console-nesting-level:before{border-bottom-color:#3d3d3d}.luna-console-theme-dark .luna-console-preview .luna-console-key{color:#e36eec}.luna-console-theme-dark .luna-console-preview .luna-console-number{color:#9980ff}.luna-console-theme-dark .luna-console-preview .luna-console-null{color:#7f7f7f}.luna-console-theme-dark .luna-console-preview .luna-console-string{color:#f29766}.luna-console-theme-dark .luna-console-preview .luna-console-boolean{color:#9980ff}.luna-console-theme-dark .luna-console-preview .luna-console-special{color:#7f7f7f}@font-face{font-family:luna-object-viewer-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAS8AAsAAAAAB7QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAGEAAACMISgl+k9TLzIAAAFsAAAAPQAAAFZLxUkWY21hcAAAAawAAADWAAACdBU42qdnbHlmAAAChAAAAC4AAAAwabU7V2hlYWQAAAK0AAAALwAAADZzjr4faGhlYQAAAuQAAAAYAAAAJAFyANlobXR4AAAC/AAAABAAAABAAZAAAGxvY2EAAAMMAAAAEAAAACIAtACobWF4cAAAAxwAAAAfAAAAIAEbAA9uYW1lAAADPAAAASkAAAIWm5e+CnBvc3QAAARoAAAAUwAAAHZW8MNZeJxNjTsOQFAQRc/z/+sV1mABohKV0gZeJRJR2X9cT4RJZu7nFIMBMjoGvHGaF6rdngcNAc/c/O/Nvq2W5E1igdNE2zv1iGh1c5FQPlYXUlJRyxt9+/pUKadQa/AveGEGZQAAAHicY2BkkGScwMDKwMBQx9ADJGWgdAIDJ4MxAwMTAyszA1YQkOaawnCAQfcjE8MJIFcITDIwMIIIAFqDCGkAAAB4nM2STQ4BQRCFv54ZP8MwFhYW4gQcShBsSERi50BWDuFCcwJedddKRGKnOt8k9aanqudVAy0gF3NRQLgTsLhJDVHP6UW94Kp8zEhKwYIlG/YcOXHm0mTPp96aumLLwdUQ1fcIqmJrwpSZL+iqak5JmyE1Ayr1bdGhr/2ZPmp/qPQtuj/uJzqQl+pfDyypesQD6AT/ElV8PjyrMccT9rdLR3PUFBI227VTio1jbm6dodg5VnPvmAsHxzofHfmi+Sbs/pwdWcXFkWdNSNg9arIE2QufuSCyAAB4nGNgZACBlQzTGZgYGMyVxVc2O073AIpAxHsYloHFRc2dPZY2OTIwAACmEQesAAB4nGNgZGBgAOINe2b6x/PbfGXgZjgBFIjifLyvAUEDwUqGZUCSg4EJxAEAUn4LLAB4nGNgZGBgOMHAACdXMjAyoAIBADizAkx4nGNgAIITUEwGAABZUAGReJxjYAACHgYJ3BAAE94BXXicY2BkYGAQYGBmANEMDExAzAWEDAz/wXwGAApcASsAeJxlkD1uwkAUhMdgSAJSghQpKbNVCiKZn5IDQE9Bl8KYtTGyvdZ6QaLLCXKEHCGniHKCHChj82hgLT9/M2/e7soABviFh3p5uG1qvVq4oTpxm/Qg7JOfhTvo40W4S38o3MMbpsJ9POKdO3j+HZ0BSuEW7vEh3Kb/KeyTv4Q7eMK3cJf+j3APK/wJ9/HqDdPIFLEp3FIn+yy0Z3n+rrStUlOoSTA+WwtdaBs6vVHro6oOydS5WMXW5GrOrs4yo0prdjpywda5cjYaxeIHkcmRIoJBgbipDktoJNgjQwh71b3UK6YtKvq1VpggwPgqtWCqaJIhlcaGyTWOrBUOPG1K1zGt+FrO5KS5zGreJCMr/u+6t6MT0Q+wbaZKzDDiE1/kg+YO+T89EV6oAAAAeJxdxjkOgCAUANE/uOOGB+FQBIjaaEJIuL6FsfE1M6Lk9fXPoKioaWjp6BnQjEzMLKwYNtHepZhtuMs1vpvO/ch4HIlIxhK4KVyc7BwiD8nvDlkA) format("woff")}[class*=" luna-object-viewer-icon-"],[class^=luna-object-viewer-icon-]{display:inline-block;font-family:luna-object-viewer-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-object-viewer-icon-caret-down:before{content:""}.luna-object-viewer-icon-caret-right:before{content:""}.luna-object-viewer{overflow-x:auto;-webkit-overflow-scrolling:touch;overflow-y:hidden;cursor:default;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;line-height:1.2;min-height:100%;color:#333;list-style:none!important}.luna-object-viewer ul{list-style:none!important;padding:0 0 0 12px!important;margin:0!important}.luna-object-viewer li{position:relative;white-space:nowrap;line-height:16px;min-height:16px}.luna-object-viewer>li>.luna-object-viewer-key{display:none}.luna-object-viewer span{position:static!important}.luna-object-viewer li .luna-object-viewer-collapsed~.luna-object-viewer-close:before{color:#999}.luna-object-viewer-array .luna-object-viewer-object .luna-object-viewer-key{display:inline}.luna-object-viewer-null{color:#5e5e5e}.luna-object-viewer-regexp,.luna-object-viewer-string{color:#c41a16}.luna-object-viewer-number{color:#1c00cf}.luna-object-viewer-boolean{color:#0d22aa}.luna-object-viewer-special{color:#5e5e5e}.luna-object-viewer-key,.luna-object-viewer-key-lighter{color:#881391}.luna-object-viewer-key-lighter{opacity:.6}.luna-object-viewer-key-special{color:#5e5e5e}.luna-object-viewer-collapsed .luna-object-viewer-icon,.luna-object-viewer-expanded .luna-object-viewer-icon{position:absolute!important;left:-12px;color:#727272;font-size:12px}.luna-object-viewer-icon-caret-right{top:0}.luna-object-viewer-icon-caret-down{top:1px}.luna-object-viewer-expanded>.luna-object-viewer-icon-caret-down{display:inline}.luna-object-viewer-expanded>.luna-object-viewer-icon-caret-right{display:none}.luna-object-viewer-collapsed>.luna-object-viewer-icon-caret-down{display:none}.luna-object-viewer-collapsed>.luna-object-viewer-icon-caret-right{display:inline}.luna-object-viewer-hidden~ul{display:none}.luna-object-viewer-theme-dark{color:#fff}.luna-object-viewer-theme-dark .luna-object-viewer-null,.luna-object-viewer-theme-dark .luna-object-viewer-special{color:#a1a1a1}.luna-object-viewer-theme-dark .luna-object-viewer-regexp,.luna-object-viewer-theme-dark .luna-object-viewer-string{color:#f28b54}.luna-object-viewer-theme-dark .luna-object-viewer-boolean,.luna-object-viewer-theme-dark .luna-object-viewer-number{color:#9980ff}.luna-object-viewer-theme-dark .luna-object-viewer-key,.luna-object-viewer-theme-dark .luna-object-viewer-key-lighter{color:#5db0d7}@font-face{font-family:luna-data-grid-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAScAAsAAAAAB4wAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAFwAAACGIRYl5k9TLzIAAAFkAAAAPQAAAFZLxUkYY21hcAAAAaQAAADLAAACXsU3J5xnbHlmAAACcAAAACUAAAAwNxN2HmhlYWQAAAKYAAAALgAAADZzjr4QaGhlYQAAAsgAAAAYAAAAJAFyANhobXR4AAAC4AAAABAAAAA8AZAAAGxvY2EAAALwAAAAEAAAACAAnACobWF4cAAAAwAAAAAfAAAAIAEaAA9uYW1lAAADIAAAASkAAAIWm5e+CnBvc3QAAARMAAAATQAAAG/8EX8xeJxjYGRgYOBiMGCwY2BycfMJYeDLSSzJY5BiYGGAAJA8MpsxJzM9kYEDxgPKsYBpDiA2A9NMDGwMMkAWF1CGFchmB4pxAnncDDxAOQ4kUV4GPqA6RgZmAE91Bj94nGNgZJBmnMDAysDAUMfQAyRloHQCAyeDMQMDEwMrMwNWEJDmmsJwgEH3IxPDCSBXCEwyMDCCCABbKQhrAAAAeJzNkksKwjAQhr+kvqpVxIUL8Qh6KFG3KtLidVx5Bq/VE+g/ySCIILhzhq+Qv8lkHgG6QCFWogPhRsDsKjUkvWCY9A611jOmUiJrNuw5cabh0sbHQ/9M23KQVksLSXu3oPPmcxbypRwGilxQ0qPSTRNl1GfMSHujDvQ+Yny3wY/7SXUX5eueaphSsAz+xar0vftqgnU6Y9VuHE1P3c/YRHdOKfaOVXlwLOrR0YQ1y4zFPzv2OmqnLxpnLC6O+tSGjL2YNmaITyYUHqgAeJxjYGQAgZUM0xmYGBjMlcVXNjtO9wCKoImbA8X9geIAqRwH2QAAAHicY2BkYGAA4hwJ4Yp4fpuvDNwMJ4ACUZyP9zUgaCBYyTAdSHIwMIE4ABioCdgAAHicY2BkYGA4wcAAJ1cyMDKgAn4AOLICS3icY2AAghNQTCIAAFMMAZF4nGNgAAIeBglcEAARPAFFeJxjYGRgYOBnYGYA0QwMTEDMBYQMDP/BfAYACkEBKgB4nGWQPW7CQBSEx2BIAlKCFCkps1UKIpmfkgNAT0GXwpi1MbK91npBossJcoQcIaeIcoIcKGPzaGAtP38zb97uygAG+IWHenm4bWq9WrihOnGb9CDsk5+FO+jjRbhLfyjcwxumwn084p07eP4dnQFK4Rbu8SHcpv8p7JO/hDt4wrdwl/6PcA8r/An38eoN08gUsSncUif7LLRnef6utK1SU6hJMD5bC11oGzq9Ueujqg7J1LlYxdbkas6uzjKjSmt2OnLB1rlyNhrF4geRyZEigkGBuKkOS2gk2CNDCHvVvdQrpi0q+rVWmCDA+Cq1YKpokiGVxobJNY6sFQ48bUrXMa34Ws7kpLnMat4kIyv+77q3oxPRD7BtpkrMMOITX+SD5g75Pz0RXqgAAAB4nF3GOQ6AIBQA0T+44YoX4VAEaNEYCNe3IDa+ZkaUNF//DIqOnoGRCc3MwsrGzoHhlMW7J2Ybrpp023LjcTxEMpbARSVRuEVebe8MtgAAAA==) format("woff")}[class*=" luna-data-grid-icon-"],[class^=luna-data-grid-icon-]{display:inline-block;font-family:luna-data-grid-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-data-grid-icon-caret-down:before{content:""}.luna-data-grid-icon-caret-up:before{content:""}.luna-data-grid{position:relative;border:1px solid;overflow:hidden;outline:0;color:#000000e0;color:var(--luna-color-text,rgba(0,0,0,.88));background-color:#fff;background-color:var(--luna-color-bg-container,#fff);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-family:var(--luna-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;user-select:none;font-size:14px}.luna-data-grid .luna-data-grid-hidden,.luna-data-grid.luna-data-grid-hidden{display:none!important}.luna-data-grid .luna-data-grid-invisible,.luna-data-grid.luna-data-grid-invisible{visibility:hidden}.luna-data-grid *{box-sizing:border-box}.luna-data-grid.luna-data-grid-theme-dark{color-scheme:dark;color:#ffffffd9;color:var(--luna-color-text-dark,rgba(255,255,255,.85));background-color:#141414;background-color:var(--luna-color-bg-container-dark,#141414)}.luna-data-grid{font-size:12px}.luna-data-grid table{width:100%;min-height:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}.luna-data-grid td,.luna-data-grid th{padding:1px 4px;border-left:1px solid;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.luna-data-grid td:first-child,.luna-data-grid th:first-child{border-left:none}.luna-data-grid th{font-weight:400;border-bottom:1px solid;text-align:left;position:relative}.luna-data-grid th.luna-data-grid-sortable{padding-right:12px}.luna-data-grid th .luna-data-grid-icon-caret-down,.luna-data-grid th .luna-data-grid-icon-caret-up{font-size:12px;position:absolute;display:none;top:6px;right:2px}.luna-data-grid td{height:20px;cursor:default;-webkit-user-select:text;-moz-user-select:text;user-select:text}.luna-data-grid:focus .luna-data-grid-node.luna-data-grid-selectable.luna-data-grid-selected{color:#fff}.luna-data-grid-data-container,.luna-data-grid-header-container{overflow:hidden}.luna-data-grid-header-container{height:21px}.luna-data-grid-data-container{overflow-y:auto;position:relative}.luna-data-grid-data-space{min-height:100%}.luna-data-grid-data{position:absolute;left:0;top:0}.luna-data-grid-filler-row td{height:auto}.luna-data-grid-resizer{position:absolute;top:0;bottom:0;width:5px;z-index:500;touch-action:none;cursor:col-resize}.luna-data-grid-resizing,.luna-data-grid-resizing .luna-data-grid *{cursor:col-resize!important}.luna-data-grid-theme-light,.luna-data-grid-theme-light td,.luna-data-grid-theme-light th{border-color:#d9d9d9;border-color:var(--luna-color-border,#d9d9d9)}.luna-data-grid-theme-light th{background-color:#0000000f;background-color:var(--luna-color-fill-secondary,rgba(0,0,0,.06))}.luna-data-grid-theme-light th.luna-data-grid-sortable:hover{background-color:#00000026;background-color:var(--luna-color-fill,rgba(0,0,0,.15))}.luna-data-grid-theme-light .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selectable:hover,.luna-data-grid-theme-light .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selected{background-color:#ddd}.luna-data-grid-theme-light .luna-data-grid-data-container tr:nth-child(2n){background-color:#f2f7fd}.luna-data-grid-theme-light:focus .luna-data-grid-node.luna-data-grid-selectable.luna-data-grid-selected{background-color:#1a73e8;background-color:var(--luna-color-primary,#1a73e8)}.luna-data-grid-theme-dark,.luna-data-grid-theme-dark td,.luna-data-grid-theme-dark th{border-color:#424242;border-color:var(--luna-color-border,#424242)}.luna-data-grid-theme-dark th{background-color:#ffffff1f;background-color:var(--luna-color-fill-secondary,rgba(255,255,255,.12))}.luna-data-grid-theme-dark th.luna-data-grid-sortable:hover{background-color:#ffffff2e;background-color:var(--luna-color-fill,rgba(255,255,255,.18))}.luna-data-grid-theme-dark .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selectable:hover,.luna-data-grid-theme-dark .luna-data-grid-data-container .luna-data-grid-node.luna-data-grid-selected{background-color:#393939}.luna-data-grid-theme-dark .luna-data-grid-data-container tr:nth-child(2n){background-color:#0b2544}.luna-data-grid-theme-dark:focus .luna-data-grid-node.luna-data-grid-selectable.luna-data-grid-selected{background-color:#1965c8;background-color:var(--luna-color-primary,#1965c8)}@font-face{font-family:luna-dom-viewer-icon;src:url(data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAS8AAsAAAAAB7QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAAGEAAACMISgl+k9TLzIAAAFsAAAAPQAAAFZLxUkWY21hcAAAAawAAADWAAACdBU42qdnbHlmAAAChAAAAC4AAAAwabU7V2hlYWQAAAK0AAAALwAAADZzjr4faGhlYQAAAuQAAAAYAAAAJAFyANlobXR4AAAC/AAAABAAAABAAZAAAGxvY2EAAAMMAAAAEAAAACIAtACobWF4cAAAAxwAAAAfAAAAIAEbAA9uYW1lAAADPAAAASkAAAIWm5e+CnBvc3QAAARoAAAAUwAAAHZW8MNZeJxNjTsOQFAQRc/z/+sV1mABohKV0gZeJRJR2X9cT4RJZu7nFIMBMjoGvHGaF6rdngcNAc/c/O/Nvq2W5E1igdNE2zv1iGh1c5FQPlYXUlJRyxt9+/pUKadQa/AveGEGZQAAAHicY2BkkGScwMDKwMBQx9ADJGWgdAIDJ4MxAwMTAyszA1YQkOaawnCAQfcjE8MJIFcITDIwMIIIAFqDCGkAAAB4nM2STQ4BQRCFv54ZP8MwFhYW4gQcShBsSERi50BWDuFCcwJedddKRGKnOt8k9aanqudVAy0gF3NRQLgTsLhJDVHP6UW94Kp8zEhKwYIlG/YcOXHm0mTPp96aumLLwdUQ1fcIqmJrwpSZL+iqak5JmyE1Ayr1bdGhr/2ZPmp/qPQtuj/uJzqQl+pfDyypesQD6AT/ElV8PjyrMccT9rdLR3PUFBI227VTio1jbm6dodg5VnPvmAsHxzofHfmi+Sbs/pwdWcXFkWdNSNg9arIE2QufuSCyAAB4nGNgZACBlQzTGZgYGMyVxVc2O073AIpAxHsYloHFRc2dPZY2OTIwAACmEQesAAB4nGNgZGBgAOINe2b6x/PbfGXgZjgBFIjifLyvAUEDwUqGZUCSg4EJxAEAUn4LLAB4nGNgZGBgOMHAACdXMjAyoAIBADizAkx4nGNgAIITUEwGAABZUAGReJxjYAACHgYJ3BAAE94BXXicY2BkYGAQYGBmANEMDExAzAWEDAz/wXwGAApcASsAeJxlkD1uwkAUhMdgSAJSghQpKbNVCiKZn5IDQE9Bl8KYtTGyvdZ6QaLLCXKEHCGniHKCHChj82hgLT9/M2/e7soABviFh3p5uG1qvVq4oTpxm/Qg7JOfhTvo40W4S38o3MMbpsJ9POKdO3j+HZ0BSuEW7vEh3Kb/KeyTv4Q7eMK3cJf+j3APK/wJ9/HqDdPIFLEp3FIn+yy0Z3n+rrStUlOoSTA+WwtdaBs6vVHro6oOydS5WMXW5GrOrs4yo0prdjpywda5cjYaxeIHkcmRIoJBgbipDktoJNgjQwh71b3UK6YtKvq1VpggwPgqtWCqaJIhlcaGyTWOrBUOPG1K1zGt+FrO5KS5zGreJCMr/u+6t6MT0Q+wbaZKzDDiE1/kg+YO+T89EV6oAAAAeJxdxjkOgCAUANE/uOOGB+FQBIjaaEJIuL6FsfE1M6Lk9fXPoKioaWjp6BnQjEzMLKwYNtHepZhtuMs1vpvO/ch4HIlIxhK4KVyc7BwiD8nvDlkA) format("woff")}[class*=" luna-dom-viewer-icon-"],[class^=luna-dom-viewer-icon-]{display:inline-block;font-family:luna-dom-viewer-icon!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.luna-dom-viewer-icon-caret-down:before{content:""}.luna-dom-viewer-icon-caret-right:before{content:""}.luna-dom-viewer{padding:0 0 0 12px;cursor:default;list-style:none;min-width:100%;color:#000000e0;color:var(--luna-color-text,rgba(0,0,0,.88));background-color:#0000;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-family:var(--luna-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;user-select:none;font-size:14px}.luna-dom-viewer .luna-dom-viewer-hidden,.luna-dom-viewer.luna-dom-viewer-hidden{display:none}.luna-dom-viewer .luna-dom-viewer-invisible,.luna-dom-viewer.luna-dom-viewer-invisible{visibility:hidden}.luna-dom-viewer *{box-sizing:border-box}.luna-dom-viewer.luna-dom-viewer-theme-dark{color-scheme:dark;color:#ffffffd9;color:var(--luna-color-text-dark,rgba(255,255,255,.85));background-color:#0000}.luna-dom-viewer{font-size:12px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace}.luna-dom-viewer ul{display:inline-block}.luna-dom-viewer-toggle{min-width:12px;margin-left:-12px}.luna-dom-viewer-icon-caret-down,.luna-dom-viewer-icon-caret-right{position:absolute!important;font-size:12px!important}.luna-dom-viewer-tree-item{min-width:200px;line-height:16px;min-height:16px;position:relative;z-index:10;outline:0}.luna-dom-viewer-tree-item.luna-dom-viewer-selected .luna-dom-viewer-selection,.luna-dom-viewer-tree-item:hover .luna-dom-viewer-selection{display:block}.luna-dom-viewer-tree-item .luna-dom-viewer-icon-caret-down{display:none}.luna-dom-viewer-tree-item.luna-dom-viewer-expanded .luna-dom-viewer-icon-caret-down{display:inline-block}.luna-dom-viewer-tree-item.luna-dom-viewer-expanded .luna-dom-viewer-icon-caret-right{display:none}.luna-dom-viewer-attribute-value{word-break:break-all}.luna-dom-viewer-attribute-value.luna-dom-viewer-attribute-underline{text-decoration:underline}.luna-dom-viewer-selection{position:absolute;display:none;left:-10000px;right:0;top:0;bottom:0;z-index:-1}.luna-dom-viewer-children{margin:0;overflow-x:visible;overflow-y:visible;padding-left:15px}.luna-dom-viewer-theme-light .luna-dom-viewer-icon-caret-down,.luna-dom-viewer-theme-light .luna-dom-viewer-icon-caret-right{color:#9aa0a6}.luna-dom-viewer-theme-light .luna-dom-viewer-html-tag,.luna-dom-viewer-theme-light .luna-dom-viewer-tag-name{color:#881280}.luna-dom-viewer-theme-light .luna-dom-viewer-attribute-name{color:#994500}.luna-dom-viewer-theme-light .luna-dom-viewer-attribute-value{color:#1a1aa6}.luna-dom-viewer-theme-light .luna-dom-viewer-html-comment{color:#236e25}.luna-dom-viewer-theme-light .luna-dom-viewer-tree-item:hover .luna-dom-viewer-selection{background:#e8eaed}.luna-dom-viewer-theme-light .luna-dom-viewer-tree-item.luna-dom-viewer-selected .luna-dom-viewer-selection{background:#e0e0e0}.luna-dom-viewer-theme-light .luna-dom-viewer-tree-item.luna-dom-viewer-selected:focus .luna-dom-viewer-selection{background:#cfe8fc}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node{word-break:break-all}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-keyword{color:#881280}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-number{color:#1c00cf}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-operator{color:gray}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-comment{color:#236e25}.luna-dom-viewer-theme-light .luna-dom-viewer-text-node .luna-dom-viewer-string{color:#1a1aa6}.luna-dom-viewer-theme-dark{color:#e8eaed}.luna-dom-viewer-theme-dark .luna-dom-viewer-icon-caret-down,.luna-dom-viewer-theme-dark .luna-dom-viewer-icon-caret-right{color:#9aa0a6}.luna-dom-viewer-theme-dark .luna-dom-viewer-html-tag,.luna-dom-viewer-theme-dark .luna-dom-viewer-tag-name{color:#5db0d7}.luna-dom-viewer-theme-dark .luna-dom-viewer-attribute-name{color:#9bbbdc}.luna-dom-viewer-theme-dark .luna-dom-viewer-attribute-value{color:#f29766}.luna-dom-viewer-theme-dark .luna-dom-viewer-html-comment{color:#898989}.luna-dom-viewer-theme-dark .luna-dom-viewer-tree-item:hover .luna-dom-viewer-selection{background:#083c69}.luna-dom-viewer-theme-dark .luna-dom-viewer-tree-item.luna-dom-viewer-selected .luna-dom-viewer-selection{background:#454545}.luna-dom-viewer-theme-dark .luna-dom-viewer-tree-item.luna-dom-viewer-selected:focus .luna-dom-viewer-selection{background:#073d69}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node{word-break:break-all}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-keyword{color:#e36eec}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-number{color:#9980ff}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-operator{color:#7f7f7f}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-comment{color:#747474}.luna-dom-viewer-theme-dark .luna-dom-viewer-text-node .luna-dom-viewer-string{color:#f29766}
+</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script></head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">DGM Consulting LLC</div>
+                <nav class="nav">
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-                <!-- Screen 2: Welcome/Intro -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 bg-orange-50 rounded-3xl mx-auto mb-6 flex items-center justify-center sleek-card">
-                                    <svg class="w-12 h-12 orange-accent" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M18.92 2.01C18.72 1.42 18.16 1 17.5 1h-11C5.84 1 5.28 1.42 5.08 2.01L3 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-1.92-5.99zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm11 0c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
-                                    </svg>
-                                </div>
-                                <h2 class="text-2xl font-medium text-slate-900 mb-4">Mobile EV Charging</h2>
-                                <p class="text-slate-600 text-center px-4">Charge your electric vehicle anywhere, anytime with our EV mobile charging service.</p>
-                            </div>
-                            
-                            <div class="flex justify-center space-x-2 mb-8">
-                                <div class="w-8 h-2 orange-bg rounded-full"></div>
-                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
-                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
-                            </div>
-                            
-                            <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg">
-                                Get Started
-                            </button>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Risk Management for Small Businesses</h1>
+                <p>Professional risk assessment and mitigation strategies designed to ensure your business's financial stability and operational efficiency.</p>
+                <a href="#contact" class="cta-button">Get Your Risk Assessment</a>
+                <div class="app-store-badge">
+                    <p><strong>Download our app on the App Store</strong></p>
+                    <p style="color: #666; font-size: 0.9rem;">Search for "DGM Consulting LLC" on the App Store</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Screen 3: Service Features -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
+        <section class="features">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: var(--spacing-sm);">Why Choose DGM Consulting?</h2>
+                <div class="features-grid">
+                    <div class="feature" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <h3>📊 Comprehensive Risk Assessment</h3>
+                        <p>Thorough evaluation of your business's financial, operational, and strategic risks with detailed analysis and actionable insights.</p>
                     </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 logo-container rounded-3xl mx-auto mb-6 flex items-center justify-center">
-                                    <img src="https://public.youware.com/users-website-assets/prod/0c600d13-a24b-41cf-b436-ce6ee551a083/b4ea7f8cb6244e53bc62dedea905f895.png" alt="HelioSource Logo" class="w-20 h-20 object-contain">
-                                </div>
-                                <h2 class="text-2xl font-medium text-slate-900 mb-4">Three Service Tiers</h2>
-                                <div class="space-y-3 text-left">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                                            <div class="w-2 h-2 orange-bg rounded-full"></div>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-900">Overnight Parking</p>
-                                            <p class="text-sm text-slate-600">Airport garages</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                                            <div class="w-2 h-2 green-bg rounded-full"></div>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-900">Concierge Service</p>
-                                            <p class="text-sm text-slate-600">While you handle tasks and do errands</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
-                                            <div class="w-2 h-2 bg-red-600 rounded-full"></div>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-slate-900">Emergency Charging</p>
-                                            <p class="text-sm text-slate-600">Roadside assistance</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex justify-center space-x-2 mb-8">
-                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
-                                <div class="w-8 h-2 orange-bg rounded-full"></div>
-                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
-                            </div>
-                            
-                            <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg">
-                                Continue
-                            </button>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
+                    <div class="feature" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <h3>💼 Small Business Focused</h3>
+                        <p>Specialized expertise in small business challenges with solutions tailored to your specific industry and business model.</p>
                     </div>
-                </div>
-
-                <!-- Screen 4: Sign Up/Login -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center">
-                            <div class="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center logo-container">
-                                <img src="https://public.youware.com/users-website-assets/prod/0c600d13-a24b-41cf-b436-ce6ee551a083/b4ea7f8cb6244e53bc62dedea905f895.png" alt="HelioSource Logo" class="w-16 h-16 object-contain">
-                            </div>
-                            
-                            <h1 class="text-2xl font-light text-slate-900 text-center mb-8">Create Account</h1>
-                            
-                            <div class="space-y-4">
-                                <div>
-                                    <input type="text" placeholder="Full Name" class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900 placeholder-slate-500">
-                                </div>
-                                <div>
-                                    <input type="email" placeholder="Email address" class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900 placeholder-slate-500">
-                                </div>
-                                <div>
-                                    <input type="tel" placeholder="Phone number" class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900 placeholder-slate-500">
-                                </div>
-                                <div>
-                                    <input type="password" placeholder="Create password" class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900 placeholder-slate-500">
-                                </div>
-                                <button class="w-full py-3 sleek-button text-white rounded-2xl font-medium">
-                                    Sign Up
-                                </button>
-                            </div>
-                            
-                            <div class="flex justify-center mt-6 space-x-4 text-sm">
-                                <span class="text-slate-600">Already have an account?</span>
-                                <button class="orange-accent font-medium">Sign In</button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
+                    <div class="feature" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <h3>📱 Mobile App Access</h3>
+                        <p>Access your risk assessments and mitigation strategies anywhere with our dedicated mobile application available on the App Store.</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- VEHICLE SETUP FLOW -->
-        <div class="flow-section">
-            <div class="flow-title">2. VEHICLE SETUP</div>
-            <div class="phone-grid">
-                
-                <!-- Screen 5: Add Vehicle Welcome -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Expert Risk Management Solutions</h2>
+                        <p>DGM Consulting LLC specializes in providing small businesses with comprehensive risk management solutions that protect and enhance your operations.</p>
+                        <p>Our proven methodologies help identify potential threats, assess their impact, and develop effective mitigation strategies that ensure your business maintains financial stability and operational excellence.</p>
+                        <p>With our mobile app available on the App Store, you can access your risk assessments, track mitigation progress, and stay informed about potential business risks wherever you are.</p>
                     </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <h2 class="text-xl font-medium text-slate-900">Add Your Vehicle</h2>
-                            <button class="text-blue-600 text-sm">Skip</button>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center">
-                            <div class="text-center mb-8">
-                                <div class="w-32 h-32 bg-orange-50 rounded-3xl mx-auto mb-6 flex items-center justify-center sleek-card">
-                                    <svg class="w-16 h-16 orange-accent" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M18.92 2.01C18.72 1.42 18.16 1 17.5 1h-11C5.84 1 5.28 1.42 5.08 2.01L3 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-1.92-5.99zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm11 0c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-medium text-slate-900 mb-4">Let's add your EV</h3>
-                                <p class="text-slate-600 text-center px-4">We'll need some basic information about your electric vehicle to provide the best charging experience.</p>
-                            </div>
-                            
-                            <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg mb-4">
-                                Add Vehicle
-                            </button>
-                            
-                            <div class="text-center">
-                                <p class="text-sm text-slate-500">You can add multiple vehicles later</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 6: Vehicle Details -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Vehicle Details</h2>
-                            <div class="w-6"></div>
-                        </div>
-                        
-                        <div class="flex-1">
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Vehicle Make</label>
-                                    <select class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900">
-                                        <option>Tesla</option>
-                                        <option>BMW</option>
-                                        <option>Audi</option>
-                                        <option>Mercedes</option>
-                                        <option>Volkswagen</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Model</label>
-                                    <select class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900">
-                                        <option>Model 3</option>
-                                        <option>Model S</option>
-                                        <option>Model X</option>
-                                        <option>Model Y</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Year</label>
-                                    <select class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900">
-                                        <option>2024</option>
-                                        <option>2023</option>
-                                        <option>2022</option>
-                                        <option>2021</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Charging Port Type</label>
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <button class="p-3 bg-blue-100 border-2 border-blue-500 rounded-2xl text-center">
-                                            <div class="text-sm font-medium text-blue-800">Tesla</div>
-                                        </button>
-                                        <button class="p-3 sleek-card border-2 border-slate-200 rounded-2xl text-center">
-                                            <div class="text-sm font-medium text-slate-600">CCS</div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg mt-6">
-                            Continue
-                        </button>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 7: Digital Authorization -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Vehicle Access</h2>
-                            <div class="w-6"></div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 bg-blue-50 rounded-3xl mx-auto mb-6 flex items-center justify-center sleek-card">
-                                    <svg class="w-12 h-12 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-medium text-slate-900 mb-4">Secure Authorization</h3>
-                                <p class="text-slate-600 text-center px-4 mb-6">To charge your vehicle remotely, we need secure authorization to access your vehicle's charging port.</p>
-                                
-                                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-6 sleek-card">
-                                    <div class="flex items-start gap-3">
-                                        <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                                        </svg>
-                                        <div class="text-left">
-                                            <p class="text-sm font-medium text-blue-800">Secure &amp; Encrypted</p>
-                                            <p class="text-xs text-blue-700">Your vehicle data is protected with bank-level security</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg">
-                                    Authorize Access
-                                </button>
-                                <button class="w-full py-3 sleek-card border border-slate-200 text-slate-700 rounded-2xl font-medium">
-                                    Set Up Later
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 8: Setup Complete -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center items-center">
-                            <div class="w-32 h-32 bg-blue-50 rounded-full mx-auto mb-8 flex items-center justify-center sleek-card">
-                                <svg class="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                                </svg>
-                            </div>
-                            
-                            <h2 class="text-2xl font-medium text-slate-900 mb-4 text-center">You're All Set!</h2>
-                            <p class="text-slate-600 text-center px-6 mb-8">Your Tesla Model 3 has been successfully added and authorized for mobile charging services.</p>
-                            
-                            <div class="sleek-card rounded-2xl p-4 mb-8 w-full">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M18.92 2.01C18.72 1.42 18.16 1 17.5 1h-11C5.84 1 5.28 1.42 5.08 2.01L3 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-1.92-5.99z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium text-slate-900">Tesla Model 3</h3>
-                                        <p class="text-sm text-slate-600">2024 • Long Range</p>
-                                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Ready</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg">
-                                Start Charging
-                            </button>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
+                    <div class="about-image">
+                        <img src="" alt="Professional businesswoman in modern office setting">
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- MAIN APP FLOW -->
-        <div class="flow-section">
-            <div class="flow-title">3. MAIN APP FLOW</div>
-            <div class="phone-grid">
-                
-                <!-- Screen 9: Dashboard -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
+        <section class="services" id="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="service-icon">⚖️</div>
+                        <h3>Risk Assessment</h3>
+                        <p>Comprehensive evaluation of financial, operational, and strategic risks specific to your business environment.</p>
                     </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-4 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-6">
-                            <div>
-                                <h2 class="text-xl font-medium text-slate-900">Good morning</h2>
-                                <p class="text-slate-600 text-sm">Sarah Johnson</p>
-                            </div>
-                            <div class="relative">
-                                <div class="w-10 h-10 logo-container rounded-full flex items-center justify-center">
-                                    <img src="https://public.youware.com/users-website-assets/prod/0c600d13-a24b-41cf-b436-ce6ee551a083/b4ea7f8cb6244e53bc62dedea905f895.png" alt="HelioSource Logo" class="w-6 h-6 object-contain">
-                                </div>
-                                <div class="status-dot absolute -top-1 -right-1 w-3 h-3 green-bg rounded-full"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="sleek-card rounded-3xl p-4 mb-6 shadow-sm">
-                            <div class="flex justify-between items-center mb-3">
-                                <h3 class="font-medium text-slate-900">Tesla Model 3</h3>
-                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Connected</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="flex-1">
-                                    <div class="flex justify-between text-sm mb-1">
-                                        <span class="text-slate-600">Battery</span>
-                                        <span class="text-slate-900 font-medium">73%</span>
-                                    </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-2">
-                                        <div class="orange-gradient h-2 rounded-full" style="width: 73%"></div>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
-                                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <h3 class="text-lg font-medium text-slate-900 mb-4">Choose Service</h3>
-                        <div class="space-y-3 flex-1">
-                            <div class="card-hover bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-4 border border-orange-100 sleek-card">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 orange-bg rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="font-medium text-slate-900">Overnight Parking Charge</h4>
-                                        <p class="text-sm text-slate-600">Airport garages</p>
-                                        <p class="text-xs orange-accent font-medium">From $XX.00 per charge</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="card-hover bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-4 border border-green-100 sleek-card">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="font-medium text-slate-900">Concierge Charging</h4>
-                                        <p class="text-sm text-slate-600">While you handle tasks and do errands</p>
-                                        <p class="text-xs text-green-600 font-medium">From $XX.00 per session</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="card-hover bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-4 border border-orange-100 sleek-card">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="font-medium text-slate-900">Roadside Assistance</h4>
-                                        <p class="text-sm text-slate-600">Emergency charging service</p>
-                                        <p class="text-xs text-orange-600 font-medium">$XX.00 per service charge</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
+                    <div class="service" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Mitigation Strategies</h3>
+                        <p>Custom-designed risk mitigation plans that protect your business while maintaining operational efficiency.</p>
                     </div>
-                </div>
-
-                <!-- Screen 10: Service Selection Details -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
+                    <div class="service" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="service-icon">💰</div>
+                        <h3>Financial Stability</h3>
+                        <p>Expert guidance on maintaining financial health and stability through proactive risk management practices.</p>
                     </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Overnight Parking Service</h2>
-                            <div class="w-6"></div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-3xl p-6 mb-6 border border-orange-200 sleek-card">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="w-16 h-16 orange-bg rounded-2xl flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-slate-900">Overnight Parking Service</h3>
-                                    <p class="text-sm text-slate-600">We bring the charge to the person</p>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3 text-sm">
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 green-accent" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                    </svg>
-                                    <span class="text-slate-700">Professional vehicle handling</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 green-accent" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                    </svg>
-                                    <span class="text-slate-700">Real-time status updates</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 green-accent" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
-                                    </svg>
-                                    <span class="text-slate-700">Secure charging</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-4 flex-1">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Service Duration</label>
-                                <div class="grid grid-cols-3 gap-2">
-                                    <button class="p-3 bg-orange-100 border-2 border-orange-500 rounded-xl text-center">
-                                        <div class="text-sm font-medium text-orange-800">20min</div>
-                                    </button>
-                                    <button class="p-3 sleek-card border-2 border-slate-200 rounded-xl text-center">
-                                        <div class="text-sm font-medium text-slate-600">30min</div>
-                                    </button>
-                                    <button class="p-3 sleek-card border-2 border-slate-200 rounded-xl text-center">
-                                        <div class="text-sm font-medium text-slate-600">1 hour</div>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="font-medium text-slate-900">Estimated Cost</span>
-                                    <span class="text-2xl font-semibold orange-accent">$XX.00</span>
-                                </div>
-                                <p class="text-sm text-slate-600 mt-1">Includes service fee and charging</p>
-                            </div>
-                        </div>
-                        
-                        <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg mt-6">
-                            Select Location
-                        </button>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
+                    <div class="service" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Operational Efficiency</h3>
+                        <p>Optimization of business processes to reduce operational risks while improving productivity and performance.</p>
                     </div>
-                </div>
-
-                <!-- Screen 11: Location Selection -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
+                    <div class="service" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="service-icon">📊</div>
+                        <h3>Ongoing Monitoring</h3>
+                        <p>Continuous risk monitoring and assessment through our mobile app and regular consultations.</p>
                     </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-6">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Location</h2>
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-blue-100 to-slate-100 rounded-3xl h-48 mb-6 flex items-center justify-center border border-slate-200 sleek-card">
-                            <div class="text-center">
-                                <div class="w-16 h-16 sleek-card rounded-2xl mx-auto mb-3 flex items-center justify-center shadow-lg">
-                                    <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    </svg>
-                                </div>
-                                <p class="text-sm text-slate-700 font-medium">Current Location</p>
-                                <p class="text-xs text-slate-600">San Francisco, CA</p>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 flex-1">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Charging Location Address</label>
-                                <div class="relative">
-                                    <input type="text" placeholder="Enter charging address" class="w-full px-4 py-3 pl-10 sleek-input rounded-2xl focus:outline-none text-slate-900 placeholder-slate-500">
-                                    <svg class="w-5 h-5 text-slate-400 absolute left-3 top-3.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-blue-50 rounded-2xl p-4 border border-blue-200 sleek-card">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 orange-bg rounded-lg flex items-center justify-center">
-                                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="font-medium text-slate-900">Use Current Location</p>
-                                        <p class="text-sm text-slate-600">1234 Market St, San Francisco</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Preferred Time</label>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <button class="p-3 bg-orange-100 border-2 border-orange-500 rounded-2xl text-center">
-                                        <div class="text-sm font-medium text-orange-800">Now</div>
-                                    </button>
-                                    <button class="p-3 sleek-card border-2 border-slate-200 rounded-2xl text-center">
-                                        <div class="text-sm font-medium text-slate-600">Schedule</div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg mt-6">
-                            Continue
-                        </button>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 12: Booking Confirmation -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Confirm Booking</h2>
-                            <div class="w-6"></div>
-                        </div>
-                        
-                        <div class="space-y-4 flex-1">
-                            <div class="sleek-card rounded-3xl p-4 shadow-sm">
-                                <h3 class="font-medium text-slate-900 mb-3">Service Details</h3>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Service</span>
-                                        <span class="text-slate-900">Overnight Parking Service</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Duration</span>
-                                        <span class="text-slate-900">20 minutes</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Vehicle</span>
-                                        <span class="text-slate-900">Tesla Model 3</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-3xl p-4 shadow-sm">
-                                <h3 class="font-medium text-slate-900 mb-3">Location &amp; Time</h3>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Location</span>
-                                        <span class="text-slate-900">Current Location</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Time</span>
-                                        <span class="text-slate-900">Now</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">ETA</span>
-                                        <span class="orange-accent font-medium">1 hour window</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-3xl p-4 border border-orange-200 sleek-card">
-                                <h3 class="font-medium text-slate-900 mb-3">Payment Summary</h3>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Service Fee</span>
-                                        <span class="text-slate-900">$XX.00</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-slate-600">Charging Cost</span>
-                                        <span class="text-slate-900">$XX.00</span>
-                                    </div>
-                                    <div class="flex justify-between border-t border-orange-200 pt-2">
-                                        <span class="font-medium text-slate-900">Total</span>
-                                        <span class="text-lg font-semibold orange-accent">$XX.00</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-2 mt-3">
-                                    <div class="w-6 h-4 orange-bg rounded-sm flex items-center justify-center">
-                                        <span class="text-xs text-white font-bold">••••</span>
-                                    </div>
-                                    <span class="text-sm text-slate-600">•••• 4242</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg mt-6">
-                            Confirm &amp; Book
-                        </button>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 13: Booking Success -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center items-center">
-                            <div class="w-32 h-32 bg-blue-50 rounded-full mx-auto mb-8 flex items-center justify-center sleek-card">
-                                <svg class="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                                </svg>
-                            </div>
-                            
-                            <h2 class="text-2xl font-medium text-slate-900 mb-4 text-center">Booking Confirmed!</h2>
-                            <p class="text-slate-600 text-center px-6 mb-8">Your EV mobile charging service appointment has been booked successfully. Our technician will arrive shortly.</p>
-                            
-                            <div class="sleek-card rounded-3xl p-6 mb-8 w-full shadow-sm">
-                                <div class="text-center">
-                                    <div class="text-3xl font-light text-slate-900 mb-2">1 hour window</div>
-                                    <p class="text-sm text-slate-600 mb-4">Estimated arrival time</p>
-                                    
-                                    <div class="flex justify-center gap-4">
-                                        <div class="text-center">
-                                            <p class="text-lg font-medium text-slate-900">Mike R.</p>
-                                            <p class="text-xs text-slate-600">Your technician</p>
-                                        </div>
-                                        <div class="w-12 h-12 bg-slate-300 rounded-full flex items-center justify-center">
-                                            <svg class="w-6 h-6 text-slate-600" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex gap-3 w-full">
-                                <button class="flex-1 py-3 sleek-card border border-slate-200 text-slate-700 rounded-2xl font-medium">
-                                    Contact
-                                </button>
-                                <button class="flex-1 py-3 sleek-button text-white rounded-2xl font-medium">
-                                    View Status
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
+                    <div class="service" style="opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;">
+                        <div class="service-icon">📱</div>
+                        <h3>Mobile App Support</h3>
+                        <p>Access your risk management tools and reports through our dedicated App Store application.</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- ACTIVE SERVICE FLOW -->
-        <div class="flow-section">
-            <div class="flow-title">4. ACTIVE SERVICE</div>
-            <div class="phone-grid">
-                
-                <!-- Screen 14: Service In Progress -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-4 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-6">
-                            <h2 class="text-xl font-medium text-slate-900">Service Active</h2>
-                            <div class="charging-pulse w-3 h-3 orange-bg rounded-full"></div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-blue-50 to-slate-50 rounded-3xl p-6 mb-6 text-center border border-slate-200 sleek-card">
-                            <div class="w-20 h-20 bg-slate-800 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M18.92 2.01C18.72 1.42 18.16 1 17.5 1h-11C5.84 1 5.28 1.42 5.08 2.01L3 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-1.92-5.99z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="font-medium text-slate-900 mb-1">Tesla Model 3</h3>
-                            <p class="text-sm text-slate-600">Being charged at SFO Airport</p>
-                            <div class="flex items-center justify-center gap-2 mt-3">
-                                <div class="w-2 h-2 orange-bg rounded-full animate-pulse"></div>
-                                <p class="text-xs orange-accent font-medium">Charging in progress</p>
-                            </div>
-                        </div>
-                        
-                        <div class="sleek-card rounded-3xl p-6 mb-6">
-                            <div class="text-center mb-4">
-                                <div class="text-4xl font-light text-slate-900 mb-1">85%</div>
-                                <p class="text-sm text-slate-600">Battery charged to</p>
-                            </div>
-                            
-                            <div class="relative mb-4">
-                                <div class="w-full bg-slate-200 rounded-full h-3">
-                                    <div class="battery-fill orange-gradient h-3 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 gap-4 text-center text-sm">
-                                <div>
-                                    <p class="text-lg font-medium text-slate-900">2h 15m</p>
-                                    <p class="text-xs text-slate-600">Time Remaining</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-blue-50 rounded-2xl p-4 border border-blue-200 mb-6 sleek-card">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-slate-300 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-slate-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-slate-900">Mike R. - Technician</p>
-                                    <p class="text-sm text-slate-600">Started charging 45 min ago</p>
-                                </div>
-                                <button class="p-2 green-bg rounded-lg">
-                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 15: Charging Complete -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex-1 flex flex-col justify-center items-center">
-                            <div class="w-32 h-32 bg-blue-50 rounded-full mx-auto mb-8 flex items-center justify-center sleek-card">
-                                <svg class="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path>
-                                </svg>
-                            </div>
-                            
-                            <h2 class="text-2xl font-medium text-slate-900 mb-4 text-center">Charging Complete!</h2>
-                            <p class="text-slate-600 text-center px-6 mb-8">Your Tesla Model 3 is fully charged.</p>
-                            
-                            <div class="sleek-card rounded-3xl p-6 mb-8 w-full shadow-sm">
-                                <div class="grid grid-cols-1 gap-6 text-center">
-                                    <div>
-                                        <div class="text-3xl font-light orange-accent mb-1">100%</div>
-                                        <p class="text-sm text-slate-600">Battery Level</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="border-t border-slate-100 pt-4 mt-4">
-                                    <div class="flex justify-between text-sm">
-                                        <span class="text-slate-600">Total Time</span>
-                                        <span class="text-slate-900 font-medium">3h 24m</span>
-                                    </div>
-                                    <div class="flex justify-between text-sm mt-1">
-                                        <span class="text-slate-600">Energy Added</span>
-                                        <span class="text-slate-900 font-medium">42.3 kWh</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg">
-                                Rate Service
-                            </button>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Screen 16: Service Rating -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Rate Service</h2>
-                            <button class="text-blue-600 text-sm">Skip</button>
-                        </div>
-                        
-                        <div class="flex-1">
-                            <div class="text-center mb-8">
-                                <div class="w-20 h-20 bg-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <svg class="w-10 h-10 text-slate-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-lg font-medium text-slate-900 mb-2">Mike R.</h3>
-                                <p class="text-sm text-slate-600">How was your experience?</p>
-                            </div>
-                            
-                            <div class="flex justify-center gap-2 mb-8">
-                                <button class="w-12 h-12 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                </button>
-                                <button class="w-12 h-12 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                </button>
-                                <button class="w-12 h-12 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                </button>
-                                <button class="w-12 h-12 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                </button>
-                                <button class="w-12 h-12 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Comments (Optional)</label>
-                                <textarea placeholder="Share your feedback..." class="w-full px-4 py-3 sleek-input rounded-2xl focus:outline-none text-slate-900 placeholder-slate-500 h-24 resize-none"></textarea>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="block text-sm font-medium text-slate-700 mb-3">What went well?</label>
-                                <div class="flex flex-wrap gap-2">
-                                    <button class="px-3 py-2 bg-orange-100 text-orange-700 rounded-xl text-sm border border-orange-200">Professional</button>
-                                    <button class="px-3 py-2 sleek-card text-slate-600 rounded-xl text-sm border border-slate-200">On time</button>
-                                    <button class="px-3 py-2 sleek-card text-slate-600 rounded-xl text-sm border border-slate-200">Careful</button>
-                                    <button class="px-3 py-2 bg-green-100 text-green-700 rounded-xl text-sm border border-green-200">Communicative</button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="w-full py-4 sleek-button text-white rounded-2xl font-medium text-lg">
-                            Submit Rating
-                        </button>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2>Ready to Secure Your Business?</h2>
+                <p>Contact DGM Consulting LLC today to schedule your comprehensive risk assessment and start building a more resilient business.</p>
+                <a href="mailto:info@dgmconsulting.com" class="cta-button">Get Started Today</a>
+                <div style="margin-top: var(--spacing-md);">
+                    <img src="" alt="Professional business team collaboration" style="max-width: 500px; width: 100%; height: auto; border-radius: 8px;">
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 DGM Consulting LLC. All rights reserved. | Risk Management Solutions for Small Businesses</p>
         </div>
+    </footer>
 
-        <!-- MANAGEMENT SCREENS -->
-        <div class="flow-section">
-            <div class="flow-title">5. ACCOUNT MANAGEMENT</div>
-            <div class="phone-grid">
-                
-                <!-- Screen 17: Profile Settings -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-4 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-6">
-                            <h2 class="text-xl font-medium text-slate-900">Profile</h2>
-                            <button class="text-blue-600 text-sm">Edit</button>
-                        </div>
-                        
-                        <div class="text-center mb-8">
-                            <div class="w-24 h-24 bg-blue-50 rounded-full mx-auto mb-4 flex items-center justify-center sleek-card">
-                                <span class="text-2xl font-medium text-blue-600">SJ</span>
-                            </div>
-                            <h3 class="text-xl font-medium text-slate-900">Sarah Johnson</h3>
-                            <p class="text-slate-600">Premium Member since 2024</p>
-                        </div>
-                        
-                        <div class="space-y-3 flex-1">
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 orange-accent" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Email</h4>
-                                    <p class="text-sm text-slate-600">sarah.j@example.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Phone</h4>
-                                    <p class="text-sm text-slate-600">(555) 123-4567</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Home Address</h4>
-                                    <p class="text-sm text-slate-600">1234 Market St, San Francisco, CA</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Member Since</h4>
-                                    <p class="text-sm text-slate-600">January 2024</p>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-4 border border-green-200 sleek-card">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 green-bg rounded-xl flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="font-medium text-slate-900">Subscription</h4>
-                                        <p class="text-sm text-slate-600">Premium Plan - $XX.00/month</p>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-xs green-accent font-medium">Active</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
+    <script src="https://lib.youware.com/youware-lib-editor.1752562065.js" id="yourware-lib"></script><script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-                <!-- Screen 18: Support Center -->
-                <div class="phone-frame rounded-[3rem] p-3 w-80 h-[600px] flex flex-col">
-                    <div class="flex justify-center mb-2">
-                        <div class="w-16 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div class="screen rounded-[2.5rem] flex-1 p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-6 text-xs font-medium text-slate-800">
-                            <span>9:41</span>
-                            <div class="flex gap-1">
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-800 rounded-sm"></div>
-                                <div class="w-4 h-2 bg-slate-400 rounded-sm"></div>
-                                <div class="w-6 h-2 bg-blue-500 rounded-sm"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center mb-8">
-                            <button class="text-blue-600">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"></path>
-                                </svg>
-                            </button>
-                            <h2 class="text-xl font-medium text-slate-900">Help &amp; Support</h2>
-                            <div class="w-6"></div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-orange-50 to-cream rounded-3xl p-6 mb-6 text-center border border-orange-200 sleek-card">
-                            <div class="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center logo-container">
-                                <img src="https://public.youware.com/users-website-assets/prod/0c600d13-a24b-41cf-b436-ce6ee551a083/b4ea7f8cb6244e53bc62dedea905f895.png" alt="HelioSource Logo" class="w-14 h-14 object-contain">
-                            </div>
-                            <h3 class="text-lg font-medium text-slate-900 mb-2">24/7 Support Available</h3>
-                            <p class="text-sm text-slate-600">We're here to help with any questions or issues you may have.</p>
-                        </div>
-                        
-                        <div class="space-y-3 flex-1">
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 orange-accent" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Live Chat</h4>
-                                    <p class="text-sm text-slate-600">Chat with our support team</p>
-                                </div>
-                                <div class="status-dot w-2 h-2 green-bg rounded-full"></div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 green-accent" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Call Support</h4>
-                                    <p class="text-sm text-slate-600">1-800-HELIO-EV</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">FAQ</h4>
-                                    <p class="text-sm text-slate-600">Find answers to common questions</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Email Support</h4>
-                                    <p class="text-sm text-slate-600">support@heliosource.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sleek-card rounded-2xl p-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-slate-900">Report Issue</h4>
-                                    <p class="text-sm text-slate-600">Submit a support ticket</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-red-50 rounded-2xl p-4 border border-red-200 mt-6 sleek-card">
-                            <div class="text-center">
-                                <p class="text-sm font-medium text-red-800">Emergency Assistance</p>
-                                <p class="text-xs text-red-700 mt-1">For urgent roadside support, call 1-800-EMERGENCY</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-center mt-4">
-                            <div class="w-32 h-1 bg-slate-900 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature, .service').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 
 <div id="youware-console" class="youware-console-container" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh; background: white; z-index: 99999999; display: none; flex-direction: column;"><div class="youware-console-logs luna-console luna-console-platform-mac luna-console-theme-light" style="width: 100%; height: 100%; overflow: hidden auto; position: relative; overscroll-behavior: contain;"><div class="luna-console-logs-space">
   <div class="luna-console-fake-logs"></div>
   <div class="luna-console-logs"></div>
-</div></div><div class="youware-console-empty-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgb(153, 153, 153); font-size: 16px; user-select: none; pointer-events: none; z-index: 10; display: none;">No logs from this project</div></div></body></html>
+</div></div><div class="youware-console-empty-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgb(153, 153, 153); font-size: 16px; user-select: none; pointer-events: none; z-index: 10; display: block;">No logs from this project</div></div></body></html>
